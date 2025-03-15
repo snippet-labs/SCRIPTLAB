@@ -1,0 +1,44 @@
+{
+  "facts": [
+    {
+      "description": "Brendan Eich developed JavaScript in just 10 days in 1995 while working at Netscape Communications Corporation.",
+      "color": "bg-yellow-400"
+    },
+    {
+      "description": "Despite the similar names, JavaScript is not related to Java. Java is a statically typed, compiled language, while JavaScript is a dynamically typed, interpreted language.",
+      "color": "bg-teal-300"
+    },
+    {
+      "description": "JavaScript is based on the ECMAScript standard, which ensures consistency across different JavaScript implementations.",
+      "color": "bg-blue-500"
+    },
+    {
+      "description": "In JavaScript, functions are first-class citizens, meaning they can be stored in variables, passed as arguments, and returned from other functions.",
+      "color": "bg-orange-600"
+    },
+    {
+      "description": "Unlike class-based languages, JavaScript uses prototype-based inheritance where objects can inherit properties directly from other objects.",
+      "color": "bg-indigo-600"
+    },
+    {
+      "description": "JavaScript supports asynchronous programming using callbacks, promises, and async/await syntax, allowing non-blocking execution.",
+      "color": "bg-green-400"
+    },
+    {
+      "description": "JavaScript is single-threaded but uses an event loop to handle asynchronous tasks like I/O operations and timers efficiently.",
+      "color": "bg-pink-400"
+    },
+    {
+      "description": "JSON is a lightweight data interchange format derived from JavaScript object syntax, widely used for APIs and data storage.",
+      "color": "bg-blue-600"
+    },
+    {
+      "description": "In JavaScript, 'null' is an intentional absence of value, while 'undefined' means a variable has been declared but not assigned a value.",
+      "color": "bg-red-400"
+    },
+    {
+      "description": "JavaScript is the core technology for interactive web development and is supported by all modern web browsers.",
+      "color": "bg-indigo-500"
+    }
+  ]
+}
