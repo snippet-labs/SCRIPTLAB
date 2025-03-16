@@ -32,7 +32,19 @@ const NAV_LINKS = [
   { name: 'Contact', href: '/contact' },
 ];
 
-const SIDEBAR_LINKS = [{ name: 'Introduction', href: '/introduction' }];
+const SIDEBAR_LINKS = [
+  { name: 'Introduction', href: '/introduction' },
+  { name: 'Why JavaScript ?', href: '/why-javascript' },
+  { name: 'Inputs & Outputs', href: '/io' },
+  { name: 'Variables & Data Types', href: '/variables-datatypes' },
+  { name: 'Operators & Expressions', href: '/operators-expressions' },
+  { name: 'Control structures', href: '/control-structures' },
+  { name: 'Javascript functions', href: '/functions' },
+  { name: 'Arrays', href: '/arrys' },
+  { name: 'Objects', href: '/objects' },
+  { name: 'Getting started with DOM', href: '/getting-started-dom' },
+  { name: 'Mastering DOM', href: '/mastering-dom' },
+];
 
 // THEME STYLE GENERATOR
 const getThemeStyles = (theme) => ({
