@@ -32,7 +32,9 @@ const NAV_LINKS = [
   { name: 'Contact', href: '/contact' },
 ];
 
-const SIDEBAR_LINKS = [{ name: 'Introduction', href: '/introduction' }];
+const SIDEBAR_LINKS = [{ name: 'Introduction', href: '/introduction' },
+  { name: 'Why JavaScript ?', href: '/why-javascript' },
+];
 
 // THEME STYLE GENERATOR
 const getThemeStyles = (theme) => ({
