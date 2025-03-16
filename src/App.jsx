@@ -7,7 +7,6 @@ import { ReactLenis } from 'lenis/react';
 // COMPONENTS
 import Layout from './components/Layout/Layout';
 import Loader from './utils/Loader/Loader';
-// import CodeEditor from './components/CodeEditor/CodeEditor';
 
 const Content = () => {
   const location = useLocation();
@@ -17,8 +16,8 @@ const Content = () => {
     setLoading(true);
     const timer = setTimeout(() => setLoading(false), 1000);
 
-    return () => clearTimeout(timer); 
-  }, [location.pathname]); 
+    return () => clearTimeout(timer);
+  }, [location.pathname]);
 
   return loading ? <Loader /> : <Layout />;
 };
