@@ -21,7 +21,7 @@ const Pagination = ({ to }) => {
   const themeStyles = useMemo(() => getThemeStyles(theme), [theme]);
 
   // MEMOIZE PAGINATION CONTENT
-  const PaginationContent = useMemo(
+  const PaginationSection = useMemo(
     () => (
       <div className="pagination">
         <Link to="/" className={themeStyles.link}>
@@ -35,7 +35,7 @@ const Pagination = ({ to }) => {
     [themeStyles]
   );
 
-  return <div className="px-4 py-6">{PaginationContent}</div>;
+  return <div className="px-4 py-6">{PaginationSection}</div>;
 };
 
 export default memo(Pagination);

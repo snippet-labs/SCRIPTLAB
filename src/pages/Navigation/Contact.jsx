@@ -262,7 +262,7 @@ const Contact = () => {
   };
 
   // MEMOIZE CONTACT CONTENT
-  const ContactContent = useMemo(
+  const ContactSection = useMemo(
     () => (
       <>
         <div className="lg:grid lg:grid-cols-2 lg:items-stretch">
@@ -385,7 +385,7 @@ const Contact = () => {
       initial="hidden"
       animate={controls}
     >
-      <div className="px-4 py-6">{ContactContent}</div>
+      <div className="px-4 py-6">{ContactSection}</div>
       {/* FOOTER */}
       <Footer />
     </motion.div>

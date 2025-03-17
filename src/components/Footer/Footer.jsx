@@ -57,7 +57,7 @@ const Footer = () => {
           </p>
         </Link>
 
-        <p className="text-center text-green-500"> TEAM SNIPPET </p>
+        <p className="text-center text-green-500 mb-3"> TEAM SNIPPET </p>
       </>
     ),
     [themeStyles]
