@@ -82,9 +82,9 @@ const ErrorPage = () => {
       initial="hidden"
       animate={controls}
     >
-      <div className="px-4 py-6">{ErrorSection}</div>
+      <div>{ErrorSection}</div>
       {/* FOOTER */}
-      <Footer theme={theme} />
+      <Footer/>
     </motion.div>
   );
 };

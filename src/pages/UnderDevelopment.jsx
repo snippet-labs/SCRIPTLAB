@@ -67,8 +67,8 @@ const UnderDevelopment = () => {
   const UnderDevelopmentContent = useMemo(
     () => (
       <div className="flex flex-col">
-        <div className="w-full h-screen flex items-center justify-center">
-          <div className={themeStyles.headlineOne}> PAGE IS UNDERDEVELOPMENT </div>
+        <div className="flex items-center justify-center">
+          <div className={themeStyles.headlineTwo}> PAGE IS UNDERDEVELOPMENT </div>
         </div>
       </div>
     ),
@@ -83,7 +83,7 @@ const UnderDevelopment = () => {
       initial="hidden"
       animate={controls}
     >
-      <div className="px-4 py-6">{UnderDevelopmentContent}</div>
+      <div className="">{UnderDevelopmentContent}</div>
       {/* FOOTER */}
       <Footer />
     </motion.div>

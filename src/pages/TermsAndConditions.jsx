@@ -107,7 +107,7 @@ const TermsAndConditions = () => {
       animate={controls}
       className="min-h-screen overflow-x-hidden"
     >
-      <div className="px-4 py-6"> {TermsAndConditionsSection} </div>
+      <div className=""> {TermsAndConditionsSection} </div>
       {/* FOOTER */}
       <Footer theme={theme} />
     </motion.div>

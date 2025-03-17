@@ -35,7 +35,7 @@ const Pagination = ({ to }) => {
     [themeStyles]
   );
 
-  return <div className="px-4 py-6">{PaginationSection}</div>;
+  return <div className="py-6">{PaginationSection}</div>;
 };
 
 export default memo(Pagination);

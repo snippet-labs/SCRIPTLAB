@@ -127,10 +127,14 @@ const HomePage = () => {
         </MemoizedSyntaxHighlighter>
 
         <div className="flex items-center gap-1 mt-2">
-          <Link to="/ide" target="_blank" className={`${themeStyles.editorButton} text-sm rounded-md px-2 transition-all`}>
+          <Link
+            to="/ide"
+            target="_blank"
+            className={`${themeStyles.editorButton} text-sm rounded-md px-2 transition-all`}
+          >
             TRY IT YOURSELF
           </Link>
-          <FaCode className={`${themeStyles.icon} animate-pulse`}/>
+          <FaCode className={`${themeStyles.icon} animate-pulse`} />
         </div>
 
         <p className="paragraph-console">Console:</p>
@@ -181,7 +185,7 @@ const HomePage = () => {
       animate={controls}
       className="min-h-screen overflow-x-hidden"
     >
-      <div className="px-4 py-6">
+      <div>
         <div className="flex flex-col">
           {HeaderSection}
 
