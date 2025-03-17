@@ -56,7 +56,7 @@ const TermsAndConditions = () => {
   const themeStyles = useMemo(() => getThemeStyles(theme), [theme]);
 
   // MEMOIZE TERMSANDCONDITIONS SECTION
-  const TermsAndConditionsContent = useMemo(() => (
+  const TermsAndConditionsSection = useMemo(() => (
     <div className="flex flex-col">
       <p className={`${themeStyles.headlineOne}`}>TERMS & CONDITIONS</p>
       <p
@@ -107,7 +107,7 @@ const TermsAndConditions = () => {
       animate={controls}
       className="min-h-screen overflow-x-hidden"
     >
-      <div className="px-4 py-6"> {TermsAndConditionsContent} </div>
+      <div className="px-4 py-6"> {TermsAndConditionsSection} </div>
       {/* FOOTER */}
       <Footer theme={theme} />
     </motion.div>

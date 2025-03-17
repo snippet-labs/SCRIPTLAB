@@ -1,14 +1,10 @@
 import React, { useEffect, useRef, useMemo, memo } from 'react';
-import Lottie from 'lottie-react';
 import { motion, useAnimation, useInView } from 'framer-motion';
 
 // STORE
 import useThemeStore from '../utils/Store/themeStore';
 
-// LOTTIE
-import Errorlottie from '../../public/lottie/Errorlottie.json';
-
-// COMPONENTS
+// COMPONENT 
 import Footer from '../components/Footer/Footer';
 
 // CONSTANTS
@@ -28,9 +24,26 @@ const getThemeStyles = (theme) => ({
   headlineTwo:
     theme === 'light' ? 'headline-two headline-two-light' : 'headline-two headline-two-dark',
   paragraph: theme === 'light' ? 'paragraph-document-light' : 'paragraph-document-dark',
+  nav: theme === 'light' ? 'bg-light border-black' : 'bg-dark border-zinc-500',
+  navHover: theme === 'light' ? 'hover:border-gray-400' : 'hover:border-gray-300',
+  text: theme === 'light' ? 'text-black' : 'text-white',
+  hover: theme === 'light' ? 'hover:bg-gray-300' : 'hover:bg-zinc-800',
+  sidebar:
+    theme === 'light'
+      ? 'bg-light border-black *: hover:bg-gray-300'
+      : 'bg-zinc-850 border-gray-500',
+  sidebarToggleButton:
+    theme === 'light'
+      ? 'transition-all duration-75 text-black hover:text-green-600 cursor-pointer'
+      : 'transition-all duration-75 text-white hover:text-green-600 cursor-pointer',
+  background: theme === 'light' ? 'bg-light' : 'bg-dark',
+  infoBlock: theme === 'light' ? 'infoblock-light' : 'infoblock-dark',
+  capsule: theme === 'light' ? 'bg-green-800/30' : 'bg-green-800/30',
+  capsuleContent: theme === 'light' ? 'text-green-600' : 'text-green-800',
+  cardButton: theme === 'light' ? 'bg-gray-300 text-black' : 'bg-gray-100',
 });
 
-const ErrorPage = () => {
+const UnderDevelopment = () => {
   // THEME STORE
   const theme = useThemeStore((state) => state.theme);
 
@@ -51,23 +64,11 @@ const ErrorPage = () => {
   }, [inView, controls]);
 
   // MEMOIZE ERROR CONTENT
-  const ErrorSection = useMemo(
+  const UnderDevelopmentContent = useMemo(
     () => (
       <div className="flex flex-col">
-        <h1 className={themeStyles.headlineOne}> 404 </h1>
-        <h2 className={themeStyles.headlineTwo}> PAGE NOT FOUND ! </h2>
-        <p className={`${themeStyles.paragraph} mt-3`}>
-          This page is either not available or it is under development.
-        </p>
-        <p className={themeStyles.paragraph}>
-          Help us create our next page, &nbsp;
-          <span className="underline hover:cursor-pointer">
-            contribute on our open source repository
-          </span>
-          .
-        </p>
-        <div className="flex items-center justify-center">
-          <Lottie animationData={Errorlottie} loop={true} className="lottie-animation-json" />
+        <div className="w-full h-screen flex items-center justify-center">
+          <div className={themeStyles.headlineOne}> PAGE IS UNDERDEVELOPMENT </div>
         </div>
       </div>
     ),
@@ -82,11 +83,11 @@ const ErrorPage = () => {
       initial="hidden"
       animate={controls}
     >
-      <div className="px-4 py-6">{ErrorSection}</div>
+      <div className="px-4 py-6">{UnderDevelopmentContent}</div>
       {/* FOOTER */}
-      <Footer theme={theme} />
+      <Footer />
     </motion.div>
   );
 };
 
-export default memo(ErrorPage);
+export default memo(UnderDevelopment);

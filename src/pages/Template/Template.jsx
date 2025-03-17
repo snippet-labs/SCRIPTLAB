@@ -68,7 +68,7 @@ const Template = () => {
   }, [inView, controls]);
 
   // MEMOIZE ERROR CONTENT
-  const TemplateContent = useMemo(
+  const TemplateSection = useMemo(
     () => (
       <div className="flex flex-col">
         <div> { /*Your content goes here */} </div>
@@ -85,7 +85,7 @@ const Template = () => {
       initial="hidden"
       animate={controls}
     >
-      <div className="px-4 py-6">{TemplateContent}</div> 
+      <div className="px-4 py-6">{TemplateSection}</div> 
       {/* FOOTER */}
       <Footer />
     </motion.div>

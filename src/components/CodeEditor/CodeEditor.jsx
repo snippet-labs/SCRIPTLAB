@@ -12,6 +12,7 @@ import useThemeStore from '../../utils/Store/themeStore';
 // LOTTIE
 
 // COMPONENTS
+import UnderDevelopment from '.././../pages/UnderDevelopment';
 
 // CONSTANTS
 const CONTAINER_VARIANTS = {
@@ -117,7 +118,9 @@ const CodeEditor = () => {
       initial="hidden"
       animate={controls}
     >
-      <div>{CodeEditorContent}</div>
+      <div>
+        {CodeEditorContent} <UnderDevelopment />
+      </div>
     </motion.div>
   );
 };
