@@ -71,12 +71,8 @@ const CodeEditor = () => {
     }
   }, [inView, controls]);
 
-  const toggleMobileMenu = useCallback(() => {
-    setIsMobileMenuOpen((prev) => !prev);
-  }, []);
-
-  // MEMOIZE ERROR CONTENT
-  const CodeEditorContent = useMemo(
+  // MEMOIZE CODE EDITOR NAVIGATION
+  const CodeEditorNavigation = useMemo(
     () => (
       <>
         <nav className={`${themeStyles.nav} border-b fixed top-0 w-full z-50`}>
@@ -110,17 +106,28 @@ const CodeEditor = () => {
     ),
     [themeStyles]
   );
+
+  // MEMOIZE THE CODE EDITOR CONTENT
+  const CodeEditorContent = useMemo(
+    () => (
+      <>
+        <div className="pt-30 px-5 sm:px-7 lg:px-8">
+          <UnderDevelopment/>
+        </div>
+      </>
+    ),
+    [themeStyles]
+  );
   return (
     <motion.div
       ref={ref}
-      className="min-h-screen overflow-x-hidden"
+      className="overflow-x-hidden"
       variants={CONTAINER_VARIANTS}
       initial="hidden"
       animate={controls}
     >
-      <div>
-        {CodeEditorContent} <UnderDevelopment />
-      </div>
+      {CodeEditorNavigation}
+      {CodeEditorContent}
     </motion.div>
   );
 };

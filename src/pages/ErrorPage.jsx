@@ -77,14 +77,14 @@ const ErrorPage = () => {
   return (
     <motion.div
       ref={ref}
-      className="min-h-screen overflow-x-hidden"
       variants={CONTAINER_VARIANTS}
       initial="hidden"
       animate={controls}
+      className="overflow-x-hidden"
     >
-      <div>{ErrorSection}</div>
+      <div className='mb-25'>{ErrorSection}</div>
       {/* FOOTER */}
-      <Footer/>
+      <Footer />
     </motion.div>
   );
 };

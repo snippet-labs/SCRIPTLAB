@@ -59,7 +59,6 @@ const Template = () => {
   const themeStyles = useMemo(() => getThemeStyles(theme), [theme]);
 
   useEffect(() => {
-    
     if (inView) {
       controls.start('visible');
     } else {
@@ -71,7 +70,7 @@ const Template = () => {
   const TemplateSection = useMemo(
     () => (
       <div className="flex flex-col">
-        <div> { /*Your content goes here */} </div>
+        <div> {/*Your content goes here */} </div>
       </div>
     ),
     [themeStyles]
@@ -80,13 +79,12 @@ const Template = () => {
   return (
     <motion.div
       ref={ref}
-      className="min-h-screen overflow-x-hidden"
+      className="overflow-x-hidden"
       variants={CONTAINER_VARIANTS}
       initial="hidden"
       animate={controls}
     >
-      <div className="px-4 py-6">{TemplateSection}</div> 
-      {/* FOOTER */}
+      <div>{TemplateSection}</div>
       <Footer />
     </motion.div>
   );

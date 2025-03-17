@@ -380,12 +380,12 @@ const Contact = () => {
   return (
     <motion.div
       ref={ref}
-      className="min-h-screen overflow-x-hidden"
+      className="overflow-x-hidden"
       variants={CONTAINER_VARIANTS}
       initial="hidden"
       animate={controls}
     >
-      <div className="px-4 py-6">{ContactSection}</div>
+      <div className='mb-26'>{ContactSection}</div>
       {/* FOOTER */}
       <Footer />
     </motion.div>
