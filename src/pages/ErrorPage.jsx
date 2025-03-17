@@ -28,6 +28,7 @@ const getThemeStyles = (theme) => ({
   headlineTwo:
     theme === 'light' ? 'headline-two headline-two-light' : 'headline-two headline-two-dark',
   paragraph: theme === 'light' ? 'paragraph-document-light' : 'paragraph-document-dark',
+  infoBlock: theme === 'light' ? 'infoblock-light' : 'infoblock-dark',
 });
 
 const ErrorPage = () => {
@@ -59,7 +60,7 @@ const ErrorPage = () => {
         <p className={`${themeStyles.paragraph} mt-3`}>
           This page is either not available or it is under development.
         </p>
-        <p className={themeStyles.paragraph}>
+        <p className={themeStyles.infoBlock}>
           Help us create our next page, &nbsp;
           <span className="underline hover:cursor-pointer">
             contribute on our open source repository
@@ -82,7 +83,7 @@ const ErrorPage = () => {
       animate={controls}
       className="overflow-x-hidden"
     >
-      <div className='mb-25'>{ErrorSection}</div>
+      <div className="">{ErrorSection}</div>
       {/* FOOTER */}
       <Footer />
     </motion.div>
