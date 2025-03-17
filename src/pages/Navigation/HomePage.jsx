@@ -55,8 +55,8 @@ const getThemeStyles = (theme) => ({
     theme === 'light' ? 'headline-one headline-one-light' : 'headline-one headline-one-dark',
   headlineTwo:
     theme === 'light' ? 'headline-two headline-two-light' : 'headline-two headline-two-dark',
-  paragraph: theme === 'light' ? 'paragraph-document-light' : 'paragraph-document-dark',  
-  infoBlock: theme === 'light' ? 'infoblock-light' : 'infoblock-dark', 
+  paragraph: theme === 'light' ? 'paragraph-document-light' : 'paragraph-document-dark',
+  infoBlock: theme === 'light' ? 'infoblock-light' : 'infoblock-dark',
   editorButton: theme === 'light' ? 'tryityourself' : 'tryityourself',
   icon: theme === 'light' ? 'text-black' : 'text-white',
 });

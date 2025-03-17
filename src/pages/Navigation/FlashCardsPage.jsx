@@ -70,7 +70,9 @@ const FlashCardsPage = () => {
   return (
     <motion.div ref={ref} variants={CONTAINER_VARIANTS} initial="hidden" animate={controls}>
       <div>
-        <div className={`headline-one ${themeStyles.headlineOne}`}>DID <br/> YOU KNOW ?</div>
+        <div className={`headline-one ${themeStyles.headlineOne}`}>
+          DID <br /> YOU KNOW ?
+        </div>
         <div className="max-w-sm md:max-w-4xl mx-auto px-4 md:px-8 lg:px-12 py-20">
           <div className="relative h-80 w-full">
             <AnimatePresence>

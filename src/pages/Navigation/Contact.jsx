@@ -385,7 +385,7 @@ const Contact = () => {
       initial="hidden"
       animate={controls}
     >
-      <div className='mb-26'>{ContactSection}</div>
+      <div className="mb-26">{ContactSection}</div>
       {/* FOOTER */}
       <Footer />
     </motion.div>
