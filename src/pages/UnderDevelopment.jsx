@@ -87,7 +87,7 @@ const UnderDevelopment = () => {
       initial="hidden"
       animate={controls}
     >
-      <div className="mb-15 lg:mb-50 md:mb-50">{UnderDevelopmentContent}</div>
+      <div className="mb-40 md:mb-75 lg:mb-75">{UnderDevelopmentContent}</div>
       <Footer />
     </motion.div>
   );
