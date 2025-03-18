@@ -105,11 +105,11 @@ const TermsAndConditions = () => {
       variants={CONTAINER_VARIANTS}
       initial="hidden"
       animate={controls}
-      className="min-h-screen overflow-x-hidden"
+      className="overflow-x-hidden"
     >
-      <div className="px-4 py-6"> {TermsAndConditionsSection} </div>
+      <div className=""> {TermsAndConditionsSection} </div>
       {/* FOOTER */}
-      <Footer theme={theme} />
+      <Footer />
     </motion.div>
   );
 };

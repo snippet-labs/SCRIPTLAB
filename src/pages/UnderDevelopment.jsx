@@ -4,7 +4,7 @@ import { motion, useAnimation, useInView } from 'framer-motion';
 // STORE
 import useThemeStore from '../utils/Store/themeStore';
 
-// COMPONENT 
+// COMPONENT
 import Footer from '../components/Footer/Footer';
 
 // CONSTANTS
@@ -66,10 +66,14 @@ const UnderDevelopment = () => {
   // MEMOIZE ERROR CONTENT
   const UnderDevelopmentContent = useMemo(
     () => (
-      <div className="flex flex-col">
-        <div className="w-full h-screen flex items-center justify-center">
-          <div className={themeStyles.headlineOne}> PAGE IS UNDERDEVELOPMENT </div>
-        </div>
+        <div>
+          <h1 className={`${themeStyles.headlineOne} mb-1`}> STAY TUNED</h1>
+          <h2 className={`${themeStyles.headlineTwo} mb-5`}> PAGE IS BEING DEVELOPED </h2>
+          <p className={`${themeStyles.paragraph}`}>
+            We're working hard to bring you something amazing! This page is currently under
+            development, but it will be live soon.
+          </p>
+          <p className={`${themeStyles.infoBlock}`}> Meanwhile you take a tour of what we have already developed for you !</p>
       </div>
     ),
     [themeStyles]
@@ -78,13 +82,12 @@ const UnderDevelopment = () => {
   return (
     <motion.div
       ref={ref}
-      className="min-h-screen overflow-x-hidden"
+      className="overflow-x-hidden"
       variants={CONTAINER_VARIANTS}
       initial="hidden"
       animate={controls}
     >
-      <div className="px-4 py-6">{UnderDevelopmentContent}</div>
-      {/* FOOTER */}
+      <div className="mb-40 md:mb-75 lg:mb-75">{UnderDevelopmentContent}</div>
       <Footer />
     </motion.div>
   );

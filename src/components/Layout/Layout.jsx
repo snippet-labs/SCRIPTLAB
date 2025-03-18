@@ -50,7 +50,7 @@ const SIDEBAR_LINKS = [
 const getThemeStyles = (theme) => ({
   nav: theme === 'light' ? 'bg-light border-black' : 'bg-dark border-zinc-500',
   navHover: theme === 'light' ? 'hover:border-gray-400' : 'hover:border-gray-300',
-  text: theme === 'light' ? 'text-black' : 'text-white',
+  text: theme === 'light' ? 'text-black' : 'text-white', 
   hover: theme === 'light' ? 'hover:bg-gray-300' : 'hover:bg-zinc-800',
   sidebar:
     theme === 'light'
@@ -264,7 +264,7 @@ const Layout = () => {
             <div
               className={`flex-1 ${isSidebarOpen ? 'lg:ml-64' : ''} transition-margin duration-300`}
             >
-              <div className="py-6 px-4 sm:px-6 lg:px-8">
+              <div className="pt-6 px-5 sm:px-7 lg:px-8">
                 <button
                   onClick={toggleSidebar}
                   className={`${themeStyles.text} hidden lg:flex items-center`}
