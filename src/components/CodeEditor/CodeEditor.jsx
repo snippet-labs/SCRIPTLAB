@@ -111,8 +111,9 @@ const CodeEditor = () => {
   const CodeEditorContent = useMemo(
     () => (
       <>
-        <div className="pt-30 px-5 sm:px-7 lg:px-8">
-          <UnderDevelopment/>
+        {CodeEditorNavigation}
+        <div className="pt-30 px-5 md:px-7 lg:px-8">
+          <UnderDevelopment />
         </div>
       </>
     ),
@@ -126,7 +127,6 @@ const CodeEditor = () => {
       initial="hidden"
       animate={controls}
     >
-      {CodeEditorNavigation}
       {CodeEditorContent}
     </motion.div>
   );
