@@ -1,5 +1,61 @@
 @import 'tailwindcss';
 
+/* PRISM */
+pre.line-numbers {
+  position: relative;
+  padding-left: 3.8em;
+  counter-reset: linenumber;
+}
+pre.line-numbers > code {
+  position: relative;
+  white-space: inherit;
+}
+.line-numbers .line-numbers-rows {
+  position: absolute;
+  pointer-events: none;
+  top: 0;
+  font-size: 100%;
+  left: -3.8em;
+  width: 3em;
+  letter-spacing: -1px;
+  border-right: 1px solid #999;
+  user-select: none;
+}
+.line-numbers-rows > span {
+  display: block;
+  counter-increment: linenumber;
+}
+.line-numbers-rows > span:before {
+  content: counter(linenumber);
+  color: #999;
+  display: block;
+  padding-right: 0.8em;
+  text-align: right;
+}
+pre::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+pre::-webkit-scrollbar-track {
+  background: #1e1e1e;
+  border-radius: 4px;
+}
+pre::-webkit-scrollbar-thumb {
+  background: #666;
+  border-radius: 4px;
+}
+pre::-webkit-scrollbar-thumb:hover {
+  background: #888;
+}
+pre {
+  overflow-x: auto;
+  max-width: 100%;
+}
+code {
+  white-space: pre;
+  word-wrap: normal;
+}
+
 /* BASE */
 html {
   scroll-behavior: smooth;
@@ -34,8 +90,7 @@ body {
 .headline-one-dark,
 .headline-two-dark,
 .headline-three-dark,
-.headline-four-dark,
-.headline-three-dark {
+.headline-four-dark {
   @apply max-w-max;
   background: -webkit-linear-gradient(0deg, #fafafa, #179e15);
   background-clip: text;
@@ -43,7 +98,9 @@ body {
 }
 
 .headline-one-light,
-.headline-two-light {
+.headline-two-light,
+.headline-three-light,
+.headline-four-light {
   @apply max-w-max;
   background: -webkit-linear-gradient(0deg, #181818, #179e15);
   background-clip: text;
@@ -56,7 +113,12 @@ body {
 .headline-two {
   @apply text-3xl lg:text-4xl lg:leading-tight font-semibold;
 }
-
+.headline-three {
+  @apply text-2xl lg:text-3xl lg:leading-tight font-semibold;
+}
+.headline-four {
+  @apply text-xl lg:text-2xl lg:leading-tight font-semibold;
+}
 .paragraph-document-dark {
   @apply text-zinc-300 mb-4 md:mb-8 md:text-xl w-full tracking-tight text-justify;
 }
@@ -102,10 +164,10 @@ body {
 
 /* SNIPPETS */
 .snippet-light {
-  @apply border-1 border-green-300 rounded-md; 
+  @apply border-1 border-green-300 rounded-md;
 }
 .snippet-dark {
-  @apply border-1 border-green-600 rounded-md; 
+  @apply border-1 border-green-600 rounded-md;
 }
 
 /* INFORMATION BLOCK */

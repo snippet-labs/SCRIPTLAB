@@ -10,17 +10,10 @@ import { atomOneDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 
 // COMPONENTS
 import Footer from '../../components/Footer/Footer';
+import CodeHighlighter from '../../utils/CodeHighlighter/CodeHighlighter';
 
-// CONSTANTS
-const CODE_SNIPPET_STYLES = {
-  overflowX: 'auto',
-  overflowY: 'hidden',
-  WebkitOverflowScrolling: 'touch',
-};
-
-const CODE_SNIPPETS = {
-  InputAndOuputPromptCode: `const user = prompt('Please enter your username', 'user');`,
-};
+// CODEBLOCK
+const CODE_SNIPPETS = `const user = prompt('Please enter your username', 'user');`;
 
 const CONTAINER_VARIANTS = {
   hidden: { opacity: 0, y: 50 },
@@ -32,18 +25,18 @@ const CONTAINER_VARIANTS = {
 };
 
 // MEMOIZED STYLED COMPONENTS
-const MemoizedSyntaxHighlighter = memo(({ theme, children }) => (
-    <SyntaxHighlighter
-      language="javascript"
-      wrapLines
-      customStyle={CODE_SNIPPET_STYLES}
-      showLineNumbers
-      style={atomOneDark}
-      className={`${theme === 'light' ? 'snippet-light' : 'snippet-dark'}`}
-    >
-      {children}
-    </SyntaxHighlighter>
-));
+// const MemoizedSyntaxHighlighter = memo(({ theme, children }) => (
+//     <SyntaxHighlighter
+//       language="javascript"
+//       wrapLines
+//       // customStyle={CODE_SNIPPET_STYLES}
+//       showLineNumbers
+//       style={atomOneDark}
+//       className={`${theme === 'light' ? 'snippet-light' : 'snippet-dark'} block overflow-x-scroll`}
+//     >
+//       {children}
+//     </SyntaxHighlighter>
+// ));
 
 // THEME STYLE GENERATOR
 const getThemeStyles = (theme) => ({
@@ -107,20 +100,22 @@ const InputAndOutput = () => {
           applications. This chapter focuses on the various methods available in JavaScript for
           receiving input from users and displaying output.
         </p>
-        <h2 className={`${themeStyles.headlineTwo} border-l-3 border-green-600 pl-1.5 mb-3`}>
+        <h2 className={`${themeStyles.headlineTwo} border-l-4 border-green-600 pl-4 mb-3`}>
           CONSOLE INPUT AND OUTPUT
         </h2>
-        <h3 className={`${themeStyles.headlineFour} border-l-3 border-transparent pl-1.5`}>
+        <h3 className={`${themeStyles.headlineFour} border-l-4 border-transparent pl-4`}>
           CONSOLE OUTPUT
         </h3>
-        <p className={`${themeStyles.paragraph} border-l-3 border-transparent pl-1.5`}>
-          Unlike some programming environments, JavaScript in browsers doesn’t support direct
-          console input. However, you can simulate input using built-in dialog functions such as :
+        <p className={`${themeStyles.paragraph} border-l-4 border-transparent pl-4`}>
+          Unlike some programming environments, JavaScript in browsers doesn't support direct
+          console input. However, you can simulate input using built-in dialog functions such as:
         </p>
-        <div className="pl-1.5 border-l-3 border-transparent">
-          <MemoizedSyntaxHighlighter theme={theme}>
-            {CODE_SNIPPETS.InputAndOuputPromptCode}
-          </MemoizedSyntaxHighlighter>
+        <div className="mb-6 pl-4 border-l-4 border-transparent">
+          <div className="overflow-x-auto">
+            <div className="min-w-full">
+              <CodeHighlighter code={CODE_SNIPPETS} language="typescript" title="fibonacci.ts" />
+            </div>
+          </div>
         </div>
       </div>
     ),
@@ -135,7 +130,7 @@ const InputAndOutput = () => {
       initial="hidden"
       animate={controls}
     >
-      <div>{InputAndOutputSection}</div>
+      {InputAndOutputSection}
       <Footer />
     </motion.div>
   );
