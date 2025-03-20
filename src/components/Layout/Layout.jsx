@@ -15,13 +15,16 @@ import { IoMdArrowDropleft } from 'react-icons/io';
 import { IoMdArrowDropright } from 'react-icons/io';
 import { FaLaptopCode } from 'react-icons/fa';
 
-// COMPONENTS
+// NAVIGATION COMPONENTS
 const Homepage = lazy(() => import('../../pages/Navigation/HomePage.jsx'));
 const Errorpage = lazy(() => import('../../pages/ErrorPage'));
 const TermsAndConditions = lazy(() => import('../../pages/TermsAndConditions'));
 const FlashCardsPage = lazy(() => import('../../pages/Navigation/FlashCardsPage'));
 const CodeEditor = lazy(() => import('../../components/CodeEditor/CodeEditor'));
 const Contact = lazy(() => import('../../pages/Navigation/Contact'));
+
+// SIDEBAR COMPONENTS
+const InputAndOutput = lazy(() => import('../../pages/Sidebar/InputAndOutput'));
 
 // CONSTANTS
 const NAV_LINKS = [
@@ -50,7 +53,7 @@ const SIDEBAR_LINKS = [
 const getThemeStyles = (theme) => ({
   nav: theme === 'light' ? 'bg-light border-black' : 'bg-dark border-zinc-500',
   navHover: theme === 'light' ? 'hover:border-gray-400' : 'hover:border-gray-300',
-  text: theme === 'light' ? 'text-black' : 'text-white', 
+  text: theme === 'light' ? 'text-black' : 'text-white',
   hover: theme === 'light' ? 'hover:bg-gray-300' : 'hover:bg-zinc-800',
   sidebar:
     theme === 'light'
@@ -286,6 +289,7 @@ const Layout = () => {
                     <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
                     <Route path="/flashcards" element={<FlashCardsPage />} />
                     <Route path="/contact" element={<Contact />} />
+                    <Route path="/io" element={<InputAndOutput />} />
                     <Route path="*" element={<Errorpage />} />
                   </Routes>
                 </div>
