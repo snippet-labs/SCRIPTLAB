@@ -231,7 +231,7 @@ const Layout = () => {
               <div className="px-3 mt-4">
                 <input
                   type="text"
-                  placeholder="Search..."
+                  placeholder="Search chapters ..."
                   value={searchQuery}
                   onChange={handleSearchChange}
                   className={`${themeStyles.background} ${themeStyles.text} border-gray-600 w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-500`}
@@ -267,19 +267,19 @@ const Layout = () => {
             <div
               className={`flex-1 min-h-screen w-full overflow-x-hidden ${
                 isSidebarOpen ? 'lg:ml-64' : ''
-              } pt-16 px-4 md:px-6 lg:px-8 transition-all duration-300`}
+              } pt-16 px-4 md:px-9 lg:px-9 transition-all duration-300`}
             >
               <div className="max-w-[100vw] overflow-x-hidden mt-5">
                 <button
                   onClick={toggleSidebar}
-                  className={`${themeStyles.text} hidden lg:flex items-center`}
+                  className={`${themeStyles.text} hidden lg:flex items-center -ml-1`}
                 >
                   {isSidebarOpen && theme ? (
                     <IoMdArrowDropleft size={25} className={themeStyles.sidebarToggleButton} />
                   ) : (
                     <IoMdArrowDropright size={25} className={themeStyles.sidebarToggleButton} />
                   )}
-                  <span className="ml-5 cursor-pointer flex items-center justify-center">
+                  <span className="ml-4 cursor-pointer flex items-center justify-center">
                     {isSidebarOpen ? `Collapse` : 'Expand'} chapter
                   </span>
                 </button>

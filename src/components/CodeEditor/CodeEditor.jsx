@@ -112,7 +112,7 @@ const CodeEditor = () => {
     () => (
       <>
         {CodeEditorNavigation}
-        <div className="pt-30 px-5 md:px-7 lg:px-8">
+        <div className="pt-30 px-4 md:px-9 lg:px-9">
           <UnderDevelopment />
         </div>
       </>
