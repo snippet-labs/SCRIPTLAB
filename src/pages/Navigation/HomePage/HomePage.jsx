@@ -12,6 +12,8 @@ import Footer from '../../../components/Footer/Footer';
 // UTILS
 import Button from '../../../utils/Button/Button';
 import CodeHighlighter from '../../../utils/CodeHighlighter/CodeHighlighter';
+import Console from '../../../utils/Console/Console';
+
 
 // FRAMER MOTION
 import { motion, useAnimation, useInView } from 'framer-motion';
@@ -114,7 +116,7 @@ const HomePage = () => {
 
         <p className="paragraph-console">Console:</p>
         <div className="min-w-full overflow-x-auto">
-          <CodeHighlighter code={HOME_PAGE.WELCOME_CODE_CONSOLE} language="javascript" title="" />
+          <Console message={HOME_PAGE.WELCOME_CODE_CONSOLE} language="javascript" />
         </div>
       </>
     ),
