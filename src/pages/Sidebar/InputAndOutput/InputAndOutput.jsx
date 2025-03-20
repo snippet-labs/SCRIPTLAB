@@ -2,18 +2,14 @@ import React, { useEffect, useRef, useMemo, memo } from 'react';
 import { motion, useAnimation, useInView } from 'framer-motion';
 
 // STORE
-import useThemeStore from '../../utils/Store/themeStore';
-
-// REACT SYNTAX HIGHLIGHTER
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import { atomOneDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import useThemeStore from '../../../utils/Store/themeStore';
 
 // COMPONENTS
-import Footer from '../../components/Footer/Footer';
-import CodeHighlighter from '../../utils/CodeHighlighter/CodeHighlighter';
+import Footer from '../../../components/Footer/Footer';
+import CodeHighlighter from '../../../utils/CodeHighlighter/CodeHighlighter';
 
-// CODEBLOCK
-const CODE_SNIPPETS = `const user = prompt('Please enter your username', 'user');`;
+// CODE SNIPPET 
+import { INPUT_AND_OUTPUT } from './CodeSnippet';
 
 const CONTAINER_VARIANTS = {
   hidden: { opacity: 0, y: 50 },
@@ -23,20 +19,6 @@ const CONTAINER_VARIANTS = {
     transition: { duration: 0.6 },
   },
 };
-
-// MEMOIZED STYLED COMPONENTS
-// const MemoizedSyntaxHighlighter = memo(({ theme, children }) => (
-//     <SyntaxHighlighter
-//       language="javascript"
-//       wrapLines
-//       // customStyle={CODE_SNIPPET_STYLES}
-//       showLineNumbers
-//       style={atomOneDark}
-//       className={`${theme === 'light' ? 'snippet-light' : 'snippet-dark'} block overflow-x-scroll`}
-//     >
-//       {children}
-//     </SyntaxHighlighter>
-// ));
 
 // THEME STYLE GENERATOR
 const getThemeStyles = (theme) => ({
@@ -113,7 +95,7 @@ const InputAndOutput = () => {
         <div className="mb-6 pl-4 border-l-4 border-transparent">
           <div className="overflow-x-auto">
             <div className="min-w-full">
-              <CodeHighlighter code={CODE_SNIPPETS} language="typescript" title="fibonacci.ts" />
+              <CodeHighlighter code={INPUT_AND_OUTPUT.INPUT_PROMPT} language="javascript" title="prompt.js" />
             </div>
           </div>
         </div>

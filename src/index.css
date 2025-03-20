@@ -128,11 +128,11 @@ body {
 }
 
 .paragraph-code {
-  @apply text-zinc-500 mb-1 md:mb-3 md:text-lg w-full tracking-tight;
+  @apply text-sm text-zinc-500 mb-1 w-full tracking-tight;
 }
 
 .paragraph-console {
-  @apply text-zinc-500 mb-1 mt-1 md:mb-3 md:text-lg w-full tracking-tight;
+  @apply text-sm text-zinc-500 mb-1 mt-3  w-full tracking-tight;
 }
 
 /* BUTTON */

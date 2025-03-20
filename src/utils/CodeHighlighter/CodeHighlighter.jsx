@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 // PRISMJS
 import Prism from 'prismjs';
@@ -12,9 +12,11 @@ import 'prismjs/components/prism-python';
 
 // ICONS
 import { FaRegCopy } from 'react-icons/fa6';
+import { FaCheck } from 'react-icons/fa6';
 
 const CodeHighlighter = ({ code, language, showLineNumbers = true, title }) => {
-  const codeRef = useRef(null); ;
+  const codeRef = useRef(null);
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     if (codeRef.current) {
@@ -22,10 +24,13 @@ const CodeHighlighter = ({ code, language, showLineNumbers = true, title }) => {
     }
   }, [code, language]);
 
+  // HANDLE ONCLICK EVENT
   const handleCopyClick = async () => {
     try {
       await navigator.clipboard.writeText(code);
-      // NEED TO ADD TOAST FOR NOTIFICATION
+      setCopied(true);
+      // ADDITIONAL : NEED TO ADD A TOSTER FOR USER ACTION MESSAGE
+      setTimeout(() => setCopied(false), 3000);
     } catch (err) {
       console.error('Failed to copy code:', err);
     }
@@ -48,7 +53,7 @@ const CodeHighlighter = ({ code, language, showLineNumbers = true, title }) => {
           className="p-1 text-gray-400 hover:text-white transition-colors"
           title="Copy code"
         >
-          <FaRegCopy size={18} />
+          {copied ? <FaCheck size={18} /> : <FaRegCopy size={18} />}
         </button>
       </div>
 
