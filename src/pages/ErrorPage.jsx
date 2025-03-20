@@ -6,7 +6,7 @@ import { motion, useAnimation, useInView } from 'framer-motion';
 import useThemeStore from '../utils/Store/themeStore';
 
 // LOTTIE
-import Errorlottie from '../../public/lottie/Errorlottie.json';
+// import Errorlottie from '../../public/lottie/Errorlottie.json'; 
 
 // COMPONENTS
 import Footer from '../components/Footer/Footer';
@@ -68,7 +68,8 @@ const ErrorPage = () => {
           .
         </p>
         <div className="flex items-center justify-center">
-          <Lottie animationData={Errorlottie} loop={true} className="lottie-animation-json" />
+          {/* LOTTIE ANIMATIONS */}
+          {/* <Lottie animationData={Errorlottie} loop={true} className="lottie-animation-json" />  */}
         </div>
       </div>
     ),
@@ -83,7 +84,7 @@ const ErrorPage = () => {
       animate={controls}
       className="overflow-x-hidden"
     >
-      <div className="">{ErrorSection}</div>
+      <div className="mb-15 md:mb-30 lg:mb-40">{ErrorSection}</div>
       {/* FOOTER */}
       <Footer />
     </motion.div>

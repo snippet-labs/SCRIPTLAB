@@ -265,9 +265,9 @@ const Layout = () => {
 
             {/* MAIN CONTENT AREA */}
             <div
-              className={`flex-1 ${isSidebarOpen ? 'lg:ml-64' : ''} transition-margin duration-300`}
+              className={`flex-1 ${isSidebarOpen ? 'lg:ml-64' : ''} pt-6 px-6 md:px-8 lg:px-9 transition-margin duration-300`}
             >
-              <div className="pt-6 px-5 sm:px-7 lg:px-8">
+              <div>
                 <button
                   onClick={toggleSidebar}
                   className={`${themeStyles.text} hidden lg:flex items-center`}

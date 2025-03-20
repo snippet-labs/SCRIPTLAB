@@ -34,7 +34,8 @@ body {
 .headline-one-dark,
 .headline-two-dark,
 .headline-three-dark,
-.headline-four-dark {
+.headline-four-dark,
+.headline-three-dark {
   @apply max-w-max;
   background: -webkit-linear-gradient(0deg, #fafafa, #179e15);
   background-clip: text;
@@ -42,9 +43,7 @@ body {
 }
 
 .headline-one-light,
-.headline-two-light,
-.headline-three-light,
-.headline-four-light {
+.headline-two-light {
   @apply max-w-max;
   background: -webkit-linear-gradient(0deg, #181818, #179e15);
   background-clip: text;
@@ -56,12 +55,6 @@ body {
 }
 .headline-two {
   @apply text-3xl lg:text-4xl lg:leading-tight font-semibold;
-}
-.headline-three {
-  @apply text-2xl lg:text-3xl lg:leading-tight font-semibold;
-}
-.headline-four {
-  @apply text-xl lg:text-2xl lg:leading-tight font-semibold;
 }
 
 .paragraph-document-dark {

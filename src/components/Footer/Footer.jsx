@@ -25,7 +25,7 @@ const Footer = () => {
   const FooterSection = useMemo(
     () => (
       <>
-        <div className={`${themeStyles.background} p-1`}>
+        <div className={`${themeStyles.background} p-1 bottom-0`}>
           <h4 className="font-cursive text-gray-600 text-center text-2xl md:text-2xl lg:text-3xl mt-3 hover:scale-90 hover:cursor-pointer hover:text-green-800 transition-all mb-5">
             {import.meta.env.VITE_SECRET}
           </h4>
@@ -65,11 +65,7 @@ const Footer = () => {
     [themeStyles]
   );
 
-  return (
-    <div className="mt-5">
-      <div className="flex flex-col">{FooterSection}</div>
-    </div>
-  );
+  return <div>{FooterSection}</div>;
 };
 
 export default memo(Footer);
