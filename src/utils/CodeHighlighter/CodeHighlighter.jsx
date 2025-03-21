@@ -1,8 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-// REACT HOT TOAST 
-// import toast, { Toaster } from 'react-hot-toast'; 
-
 // PRISMJS
 import Prism from 'prismjs';
 import 'prismjs/themes/prism-tomorrow.css';
@@ -32,15 +29,9 @@ const CodeHighlighter = ({ code, language, showLineNumbers = true, title }) => {
     try {
       await navigator.clipboard.writeText(code);
       setCopied(true);
-      // toast.success("Code copied!", {
-      //   position: 'top-center'
-      // })
       setTimeout(() => setCopied(false), 3000);
     } catch (err) {
       console.error('Failed to copy code:', err);
-      // toast.warning("Code copied!", {
-      //   position: 'top-center'
-      // })
     }
   };
 
@@ -63,7 +54,6 @@ const CodeHighlighter = ({ code, language, showLineNumbers = true, title }) => {
         >
           {copied ? <FaCheck size={18} /> : <FaRegCopy size={18} />}
         </button>
-        {/* <Toaster/> */}
       </div>
 
       {/* CODE CONTAINER */}

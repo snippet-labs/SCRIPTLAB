@@ -2,9 +2,6 @@ import React, { useEffect, useRef, useMemo, memo } from 'react';
 import Lottie from 'lottie-react';
 import { motion, useAnimation, useInView } from 'framer-motion';
 
-// REACT HOT TOAST
-import toast, { Toaster } from 'react-hot-toast';
-
 // STORE
 import useThemeStore from '../../utils/Store/themeStore';
 

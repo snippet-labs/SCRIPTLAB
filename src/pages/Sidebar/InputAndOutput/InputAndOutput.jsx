@@ -33,23 +33,6 @@ const getThemeStyles = (theme) => ({
   headlineFour:
     theme === 'light' ? 'headline-four headline-four-light' : 'headline-four headline-four-dark',
   paragraph: theme === 'light' ? 'paragraph-document-light' : 'paragraph-document-dark',
-  nav: theme === 'light' ? 'bg-light border-black' : 'bg-dark border-zinc-500',
-  navHover: theme === 'light' ? 'hover:border-gray-400' : 'hover:border-gray-300',
-  text: theme === 'light' ? 'text-black' : 'text-white',
-  hover: theme === 'light' ? 'hover:bg-gray-300' : 'hover:bg-zinc-800',
-  sidebar:
-    theme === 'light'
-      ? 'bg-light border-black *: hover:bg-gray-300'
-      : 'bg-zinc-850 border-gray-500',
-  sidebarToggleButton:
-    theme === 'light'
-      ? 'transition-all duration-75 text-black hover:text-green-600 cursor-pointer'
-      : 'transition-all duration-75 text-white hover:text-green-600 cursor-pointer',
-  background: theme === 'light' ? 'bg-light' : 'bg-dark',
-  infoBlock: theme === 'light' ? 'infoblock-light' : 'infoblock-dark',
-  capsule: theme === 'light' ? 'bg-green-800/30' : 'bg-green-800/30',
-  capsuleContent: theme === 'light' ? 'text-green-600' : 'text-green-800',
-  cardButton: theme === 'light' ? 'bg-gray-300 text-black' : 'bg-gray-100',
 });
 
 const InputAndOutput = () => {
