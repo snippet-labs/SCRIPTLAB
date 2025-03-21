@@ -49,7 +49,7 @@ const CodeHighlighter = ({ code, language, showLineNumbers = true, title }) => {
         </div>
         <button
           onClick={handleCopyClick}
-          className="p-1 text-gray-400 hover:text-white transition-colors"
+          className="p-1 text-gray-400 hover:text-white hover:cursor-pointer transition-colors"
           title="Copy code"
         >
           {copied ? <FaCheck size={18} /> : <FaRegCopy size={18} />}
