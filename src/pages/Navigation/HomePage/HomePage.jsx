@@ -1,34 +1,32 @@
 import React, { useRef, useEffect, useMemo, memo } from 'react';
 import Lottie from 'lottie-react';
-import { Link } from 'react-router-dom';
 
 // STORE
-import useThemeStore from '../../utils/Store/themeStore';
+import useThemeStore from '../../../utils/Store/themeStore';
 
 // COMPONENTS
-import Pagination from '../../utils/Pagination/Pagination';
-import Chapter from '../../utils/Chapter/Chapter';
-import Footer from '../../components/Footer/Footer';
+import Pagination from '../../../utils/Pagination/Pagination';
+import Chapter from '../../../utils/Chapter/Chapter';
+import Footer from '../../../components/Footer/Footer';
 
-// ICONS
-import { FaCode } from 'react-icons/fa';
+// UTILS
+import Button from '../../../utils/Button/Button';
+import CodeHighlighter from '../../../utils/CodeHighlighter/CodeHighlighter';
+import Console from '../../../utils/Console/Console';
+
 
 // FRAMER MOTION
 import { motion, useAnimation, useInView } from 'framer-motion';
 
 // LOTTIE
-import Homelottie from '../../../public/lottie/Homelottie.json';
+import Homelottie from '../../../../public/lottie/Homelottie.json';
 
 // REACT SYNTAX HIGHLIGHTER
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import { atomOneDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import { HOME_PAGE } from './CodeSnippet';
 
 // CONSTANTS
-const CODE_SNIPPETS = {
-  HomeCodeString: 'console.log("Snippet team is here!")',
-  HomeCodeConsole: 'Snippet team is here!',
-};
-
 const CONTAINER_VARIANTS = {
   hidden: { opacity: 0, y: 50 },
   visible: {
@@ -38,16 +36,6 @@ const CONTAINER_VARIANTS = {
   },
 };
 
-// MEMOIZED STYLED COMPONENTS
-const MemoizedSyntaxHighlighter = memo(({ theme, children }) => (
-  <SyntaxHighlighter
-    language="javascript"
-    style={atomOneDark}
-    className={`${theme === 'light' ? 'snippet-light' : 'snippet-dark'}`}
-  >
-    {children}
-  </SyntaxHighlighter>
-));
 
 // THEME TOGGLER
 const getThemeStyles = (theme) => ({
@@ -57,8 +45,6 @@ const getThemeStyles = (theme) => ({
     theme === 'light' ? 'headline-two headline-two-light' : 'headline-two headline-two-dark',
   paragraph: theme === 'light' ? 'paragraph-document-light' : 'paragraph-document-dark',
   infoBlock: theme === 'light' ? 'infoblock-light' : 'infoblock-dark',
-  editorButton: theme === 'light' ? 'tryityourself' : 'tryityourself',
-  icon: theme === 'light' ? 'text-black' : 'text-white',
 });
 
 const HomePage = () => {
@@ -122,26 +108,16 @@ const HomePage = () => {
 
         <p className="paragraph-code">Your first JavaScript code:</p>
 
-        <MemoizedSyntaxHighlighter theme={theme}>
-          {CODE_SNIPPETS.HomeCodeString}
-        </MemoizedSyntaxHighlighter>
-
-        <div className="flex items-center gap-1 mt-2">
-          <Link
-            to="/ide"
-            target="_blank"
-            className={`${themeStyles.editorButton} text-sm rounded-md px-2 transition-all`}
-          >
-            TRY IT YOURSELF
-          </Link>
-          <FaCode className={`${themeStyles.icon} animate-pulse`} />
+        <div className="min-w-full overflow-x-auto">
+          <CodeHighlighter code={HOME_PAGE.WELCOME_CODE} language="javascript" title="welcome.js" />
         </div>
 
-        <p className="paragraph-console">Console:</p>
+        <Button />
 
-        <MemoizedSyntaxHighlighter theme={theme}>
-          {CODE_SNIPPETS.HomeCodeConsole}
-        </MemoizedSyntaxHighlighter>
+        <p className="paragraph-console">Console:</p>
+        <div className="min-w-full overflow-x-auto">
+          <Console message={HOME_PAGE.WELCOME_CODE_CONSOLE} language="javascript" />
+        </div>
       </>
     ),
     [theme, themeStyles]

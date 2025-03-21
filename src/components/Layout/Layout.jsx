@@ -15,13 +15,16 @@ import { IoMdArrowDropleft } from 'react-icons/io';
 import { IoMdArrowDropright } from 'react-icons/io';
 import { FaLaptopCode } from 'react-icons/fa';
 
-// COMPONENTS
-const Homepage = lazy(() => import('../../pages/Navigation/HomePage.jsx'));
+// NAVIGATION COMPONENTS
+const Homepage = lazy(() => import('../../pages/Navigation/HomePage/HomePage'));
 const Errorpage = lazy(() => import('../../pages/ErrorPage'));
 const TermsAndConditions = lazy(() => import('../../pages/TermsAndConditions'));
 const FlashCardsPage = lazy(() => import('../../pages/Navigation/FlashCardsPage'));
 const CodeEditor = lazy(() => import('../../components/CodeEditor/CodeEditor'));
 const Contact = lazy(() => import('../../pages/Navigation/Contact'));
+
+// SIDEBAR COMPONENTS
+const InputAndOutput = lazy(() => import('../../pages/Sidebar/InputAndOutput/InputAndOutput.jsx'));
 
 // CONSTANTS
 const NAV_LINKS = [
@@ -50,7 +53,7 @@ const SIDEBAR_LINKS = [
 const getThemeStyles = (theme) => ({
   nav: theme === 'light' ? 'bg-light border-black' : 'bg-dark border-zinc-500',
   navHover: theme === 'light' ? 'hover:border-gray-400' : 'hover:border-gray-300',
-  text: theme === 'light' ? 'text-black' : 'text-white', 
+  text: theme === 'light' ? 'text-black' : 'text-white',
   hover: theme === 'light' ? 'hover:bg-gray-300' : 'hover:bg-zinc-800',
   sidebar:
     theme === 'light'
@@ -205,13 +208,13 @@ const Layout = () => {
           </nav>
 
           {/* MAIN CONTAINER WITH SIDEBAR */}
-          <div className={`${themeStyles.background} flex items-center pt-16 justify-center`}>
+          <div className={`${themeStyles.background} flex min-h-screen w-full`}>
             {/* SIDEBAR WITH ANIMATION */}
             <motion.div
               initial={{ x: -300 }}
               animate={{ x: isSidebarOpen ? 0 : -300 }}
               transition={{ duration: 0.3, ease: 'easeInOut' }}
-              className={`${themeStyles.sidebar} fixed top-0 left-0 h-[100%] w-64 border-r z-20 backdrop-blur-lg`}
+              className={`${themeStyles.sidebar} fixed top-0 left-0 h-screen w-64 border-r z-20 backdrop-blur-lg`}
             >
               {/* SIDEBAR HEADER */}
               <div className={`pt-20 flex items-center justify-between border-${themeStyles.text}`}>
@@ -228,7 +231,7 @@ const Layout = () => {
               <div className="px-3 mt-4">
                 <input
                   type="text"
-                  placeholder="Search..."
+                  placeholder="Search chapters ..."
                   value={searchQuery}
                   onChange={handleSearchChange}
                   className={`${themeStyles.background} ${themeStyles.text} border-gray-600 w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-green-500`}
@@ -262,30 +265,33 @@ const Layout = () => {
 
             {/* MAIN CONTENT AREA */}
             <div
-              className={`flex-1 ${isSidebarOpen ? 'lg:ml-64' : ''} pt-6 px-6 md:px-8 lg:px-9 transition-margin duration-300`}
+              className={`flex-1 min-h-screen w-full overflow-x-hidden ${
+                isSidebarOpen ? 'lg:ml-64' : ''
+              } pt-16 px-4 md:px-9 lg:px-9 transition-all duration-300`}
             >
-              <div>
+              <div className="max-w-[100vw] overflow-x-hidden mt-5">
                 <button
                   onClick={toggleSidebar}
-                  className={`${themeStyles.text} hidden lg:flex items-center`}
+                  className={`${themeStyles.text} hidden lg:flex items-center -ml-1`}
                 >
                   {isSidebarOpen && theme ? (
                     <IoMdArrowDropleft size={25} className={themeStyles.sidebarToggleButton} />
                   ) : (
                     <IoMdArrowDropright size={25} className={themeStyles.sidebarToggleButton} />
                   )}
-                  <span className="ml-5 cursor-pointer flex items-center justify-center">
+                  <span className="ml-4 cursor-pointer flex items-center justify-center">
                     {isSidebarOpen ? `Collapse` : 'Expand'} chapter
                   </span>
                 </button>
 
                 {/* PAGES ROUTES */}
-                <div className="mt-8">
+                <div className="mt-8 w-full overflow-x-hidden">
                   <Routes>
                     <Route path="/" element={<Homepage />} />
                     <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
                     <Route path="/flashcards" element={<FlashCardsPage />} />
                     <Route path="/contact" element={<Contact />} />
+                    <Route path="/io" element={<InputAndOutput />} />
                     <Route path="*" element={<Errorpage />} />
                   </Routes>
                 </div>

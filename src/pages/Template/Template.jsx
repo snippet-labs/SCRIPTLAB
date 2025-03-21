@@ -23,13 +23,9 @@ const CONTAINER_VARIANTS = {
 // THEME STYLE GENERATOR
 const getThemeStyles = (theme) => ({
   headlineOne:
-    theme === 'light' 
-      ? 'headline-one headline-one-light' 
-      : 'headline-one headline-one-dark',
+    theme === 'light' ? 'headline-one headline-one-light' : 'headline-one headline-one-dark',
   headlineTwo:
-    theme === 'light' 
-      ? 'headline-two headline-two-light' 
-      : 'headline-two headline-two-dark',
+    theme === 'light' ? 'headline-two headline-two-light' : 'headline-two headline-two-dark',
   headlineThree:
     theme === 'light'
       ? 'headline-three headline-three-light'

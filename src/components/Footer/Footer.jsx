@@ -30,8 +30,8 @@ const Footer = () => {
             {import.meta.env.VITE_SECRET}
           </h4>
           <div className="flex flex-col items-center justify-evenly md:flex-row lg:flex-row">
-            <div className="w-[30ch] mb-10 md:w-[50ch] lg:w-[80ch] md:mb-0 lg:mg-0 border-b-4  md:border-b-0 md:border-r-4 lg:border-r-4 border-green-800">
-              <p className="text-black text-sm">
+            <div className="text-center md:text-left lg:text-left w-[30ch] mb-10 md:w-[50ch] lg:w-[80ch] md:mb-0 lg:mg-0 border-b-4  md:border-b-0 md:border-r-4 lg:border-r-4 border-green-800">
+              <p className="text-center text-black text-sm md:text-left lg:text-left">
                 This documentation is created to open the world of Javascript, spread the love of
                 programming and enlarge the existing javascript community.
               </p>
