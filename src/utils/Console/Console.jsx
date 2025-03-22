@@ -16,7 +16,6 @@ import { FaTerminal } from 'react-icons/fa6';
 
 const Console = ({ message, language, showLineNumbers = true }) => {
   const consoleRef = useRef(null);
-  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     if (consoleRef.current) {
