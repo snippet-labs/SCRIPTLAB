@@ -57,21 +57,23 @@ const Introduction = () => {
   // MEMOIZED THEME STYLES
   const themeStyles = useMemo(() => getThemeStyles(theme), [theme]);
 
-const [isModalVisible, setModalVisible] = useState(false);
-const [modalContent, setModalContent] = useState('');
+  const [isModalVisible, setModalVisible] = useState(false);
+  const [modalHeading, setModalHeading] = useState('');
 
-const handleIconClick = () => {
-  setModalContent(
-    'This term refers to languages that are interpreted or compiled at runtime. It is essential in understanding how JavaScript operates.This term refers to languages that are interpreted or compiled at runtime. It is essential in understanding how JavaScript operates.'
-  );
-  setModalVisible(true);
-};
+  const [modalContent, setModalContent] = useState('');
 
-const handleCloseModal = () => {
-  setModalVisible(false);
-  setModalContent('');
-};
+  const handleIconClick = () => {
+    setModalHeading('What is a Scripting Language?');
+    setModalContent(
+      'This term refers to languages that are interpreted or compiled at runtime. It is essential in understanding how JavaScript operates.'
+    );
+    setModalVisible(true);
+  };
 
+  const handleCloseModal = () => {
+    setModalVisible(false);
+    setModalContent('');
+  };
 
   useEffect(() => {
     if (inView) {
@@ -85,41 +87,66 @@ const handleCloseModal = () => {
   const IntroductionSection = useMemo(
     () => (
       <div className="flex flex-col">
-        <div>
-          <h1 className={themeStyles.headlineOne}> INTRODUCTION TO JAVASCRIPT </h1>
-          <p className={`${themeStyles.paragraph} mt-3`}>
-            JavaScript is one of the core technologies of the web, alongside HTML and CSS. It is a
-            versatile, high-level programming language primarily used to create interactive and
-            dynamic user experiences on websites. Whether you are building a simple interactive form
-            or a complex single-page application, JavaScript is an essential tool in your
-            development arsenal.
-          </p>
-          <h2 className={themeStyles.headlineTwo}> WHAT IS JAVASCRIPT? </h2>
-          <p className={themeStyles.paragraph}>
-            JavaScript is a{' '}
-            <span className="relative inline-flex items-center">
-              <strong>scripting language</strong>
-              <div
-                className="relative inline-flex items-center cursor-pointer"
-                onClick={handleIconClick}
-              >
-                <FaInfoCircle className="ml-1 text-blue-500" />
-              </div>
-              <InfoModal
-                isVisible={isModalVisible}
-                onClose={handleCloseModal}
-                content={modalContent}
-                heading="What is a Scripting Language?"
-                theme={theme}
-              />
-            </span>{' '}
-            that runs in the browser as well as on the server (using environments like Node.js).
-            Originally developed to add interactivity to web pages, JavaScript has evolved into a
-            powerful language that supports object-oriented, functional, and imperative programming
-            styles. Its flexibility and extensive ecosystem of libraries and frameworks (like React,
-            Angular, and Vue) make it a top choice for modern web development.
-          </p>
-        </div>
+        <h1 className={themeStyles.headlineOne}> INTRODUCTION TO JAVASCRIPT </h1>
+        <p className={`${themeStyles.paragraph} mt-3`}>
+          JavaScript is one of the core technologies of the web, alongside HTML and CSS. It is a
+          versatile, high-level programming language primarily used to create interactive and
+          dynamic user experiences on websites. Whether you are building a simple interactive form
+          or a complex single-page application, JavaScript is an essential tool in your development
+          arsenal.
+        </p>
+        <h2 className={`${themeStyles.headlineTwo} mb-4`}> WHAT IS JAVASCRIPT? </h2>
+        <p className={themeStyles.paragraph}>
+          JavaScript is a{' '}
+          <span className="relative inline-flex items-center">
+            <strong>scripting language</strong>
+            <div
+              className="relative inline-flex items-center cursor-pointer"
+              onClick={handleIconClick}
+            >
+              <FaInfoCircle className="ml-1 text-blue-500" />
+            </div>
+            <InfoModal
+              isVisible={isModalVisible}
+              onClose={handleCloseModal}
+              content={modalContent}
+              heading={modalHeading}
+            />
+          </span>{' '}
+          that runs in the browser as well as on the server (using environments like Node.js).
+          Originally developed to add interactivity to web pages, JavaScript has evolved into a
+          powerful language that supports object-oriented, functional, and imperative programming
+          styles. Its flexibility and extensive ecosystem of libraries and frameworks (like React,
+          Angular, and Vue) make it a top choice for modern web development.
+        </p>
+
+        <h2 className={`${themeStyles.headlineTwo} mb-6`}>KEY FEATURES</h2>
+        <ul className="list-disc pl-6">
+          <li className={themeStyles.paragraph}>
+            <strong>Interactivity:</strong> JavaScript allows you to respond to user events (clicks,
+            form submissions, etc.) and update the page content dynamically without reloading the
+            entire page.
+          </li>
+          <li className={themeStyles.paragraph}>
+            <strong>Dynamic Typing:</strong> Variables in JavaScript can hold data of any type
+            without needing explicit type declarations.
+          </li>
+          <li className={themeStyles.paragraph}>
+            <strong>First-Class Functions:</strong> Functions in JavaScript are treated as objects,
+            meaning they can be assigned to variables, passed as arguments, and returned by other
+            functions.
+          </li>
+          <li className={themeStyles.paragraph}>
+            <strong>Event-Driven Programming:</strong> JavaScript is built around an event loop,
+            making it well-suited for handling asynchronous tasks like API calls, animations, and
+            user interactions.
+          </li>
+          <li className={themeStyles.paragraph}>
+            <strong>Evolving Standards:</strong> With ECMAScript (the standard behind JavaScript),
+            the language continues to evolve, introducing new syntax and features (such as arrow
+            functions, template literals, and async/await).
+          </li>
+        </ul>
       </div>
     ),
     [themeStyles, isModalVisible]
