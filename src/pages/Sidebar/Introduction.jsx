@@ -8,6 +8,8 @@ import useThemeStore from '../../utils/Store/themeStore';
 // COMPONENTS
 import Footer from '../../components/Footer/Footer';
 import InfoModal from '../../utils/InfoModal/InfoModal';
+import Chapter from '../../utils/Chapter/Chapter';
+import Pagination from '../../utils/Pagination/Pagination';
 
 // CONSTANTS
 const CONTAINER_VARIANTS = {
@@ -26,23 +28,10 @@ const getThemeStyles = (theme) => ({
   headlineTwo:
     theme === 'light' ? 'headline-two headline-two-light' : 'headline-two headline-two-dark',
   paragraph: theme === 'light' ? 'paragraph-document-light' : 'paragraph-document-dark',
-  nav: theme === 'light' ? 'bg-light border-black' : 'bg-dark border-zinc-500',
-  navHover: theme === 'light' ? 'hover:border-gray-400' : 'hover:border-gray-300',
   text: theme === 'light' ? 'text-black' : 'text-white',
-  hover: theme === 'light' ? 'hover:bg-gray-300' : 'hover:bg-zinc-800',
-  sidebar:
-    theme === 'light'
-      ? 'bg-light border-black *: hover:bg-gray-300'
-      : 'bg-zinc-850 border-gray-500',
-  sidebarToggleButton:
-    theme === 'light'
-      ? 'transition-all duration-75 text-black hover:text-green-600 cursor-pointer'
-      : 'transition-all duration-75 text-white hover:text-green-600 cursor-pointer',
   background: theme === 'light' ? 'bg-light' : 'bg-dark',
   infoBlock: theme === 'light' ? 'infoblock-light' : 'infoblock-dark',
-  capsule: theme === 'light' ? 'bg-green-800/30' : 'bg-green-800/30',
-  capsuleContent: theme === 'light' ? 'text-green-600' : 'text-green-800',
-  cardButton: theme === 'light' ? 'bg-gray-300 text-black' : 'bg-gray-100',
+  token: theme === 'light' ? 'token-light' : 'token-dark',
 });
 
 const Introduction = () => {
@@ -95,8 +84,11 @@ const Introduction = () => {
           or a complex single-page application, JavaScript is an essential tool in your development
           arsenal.
         </p>
-        <h2 className={`${themeStyles.headlineTwo} mb-4`}> WHAT IS JAVASCRIPT? </h2>
-        <p className={themeStyles.paragraph}>
+        <h2 className={`${themeStyles.headlineTwo} border-l-3 border-green-600 pl-1.5 mb-3`}>
+          {' '}
+          WHAT IS JAVASCRIPT?{' '}
+        </h2>
+        <p className={`${themeStyles.paragraph} border-l-3 border-transparent pl-1.5`}>
           JavaScript is a{' '}
           <span className="relative inline-flex items-center">
             <strong>scripting language</strong>
@@ -120,33 +112,36 @@ const Introduction = () => {
           Angular, and Vue) make it a top choice for modern web development.
         </p>
 
-        <h2 className={`${themeStyles.headlineTwo} mb-6`}>KEY FEATURES</h2>
-        <ul className="list-disc pl-6">
+        <h2 className={`${themeStyles.headlineTwo} border-l-3 border-green-600 pl-1.5 mb-3`}>
+          KEY FEATURES
+        </h2>
+        <ul className="border-l-3 border-transparent pl-1.5">
           <li className={themeStyles.paragraph}>
-            <strong>Interactivity:</strong> JavaScript allows you to respond to user events (clicks,
-            form submissions, etc.) and update the page content dynamically without reloading the
-            entire page.
+            <span className={themeStyles.token}>Interactivity</span>&nbsp;: JavaScript allows you to
+            respond to user events (clicks, form submissions, etc.) and update the page content
+            dynamically without reloading the entire page.
           </li>
           <li className={themeStyles.paragraph}>
-            <strong>Dynamic Typing:</strong> Variables in JavaScript can hold data of any type
-            without needing explicit type declarations.
+            <span className={themeStyles.token}>Dynamic Typing</span>&nbsp;: Variables in JavaScript
+            can hold data of any type without needing explicit type declarations.
           </li>
           <li className={themeStyles.paragraph}>
-            <strong>First-Class Functions:</strong> Functions in JavaScript are treated as objects,
-            meaning they can be assigned to variables, passed as arguments, and returned by other
-            functions.
+            <span className={themeStyles.token}>First-Class Functions</span>&nbsp;: Functions in
+            JavaScript are treated as objects, meaning they can be assigned to variables, passed as
+            arguments, and returned by other functions.
           </li>
           <li className={themeStyles.paragraph}>
-            <strong>Event-Driven Programming:</strong> JavaScript is built around an event loop,
-            making it well-suited for handling asynchronous tasks like API calls, animations, and
-            user interactions.
+            <span className={themeStyles.token}>Event-Driven Programming</span>&nbsp;: JavaScript is
+            built around an event loop, making it well-suited for handling asynchronous tasks like
+            API calls, animations, and user interactions.
           </li>
           <li className={themeStyles.paragraph}>
-            <strong>Evolving Standards:</strong> With ECMAScript (the standard behind JavaScript),
-            the language continues to evolve, introducing new syntax and features (such as arrow
-            functions, template literals, and async/await).
+            <span className={themeStyles.token}>Evolving Standards</span>&nbsp;: With ECMAScript
+            (the standard behind JavaScript), the language continues to evolve, introducing new
+            syntax and features (such as arrow functions, template literals, and async/await).
           </li>
         </ul>
+        <p className={`${themeStyles.infoBlock} mt-5`}>Hope this was convincing enough,set your peddles tight. See you in the next chapter... </p>
       </div>
     ),
     [themeStyles, isModalVisible]
@@ -161,7 +156,8 @@ const Introduction = () => {
       animate={controls}
     >
       <div>{IntroductionSection}</div>
-      {/* FOOTER */}
+      <Chapter title="Why Javascript ?" />
+      <Pagination to={'/'} previous={'/'} />
       <Footer />
     </motion.div>
   );
