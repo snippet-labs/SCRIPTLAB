@@ -22,8 +22,8 @@ const Chapter = ({ title }) => {
   // MEMOIZED CHAPTER SECTION
   const ChapterSection = useMemo(() => (
     <>
-      <div className="flex items-center justify-center">
-        <Lottie animationData={Footerlottie} loop={true} className="lottie-animation-json" />
+      <div className="flex items-center justify-center mt-10">
+        {/* <Lottie animationData={Footerlottie} loop={true} className="lottie-animation-json" /> */}
       </div>
       <p className={`${themeStyles.chapterText} text-center`}>
         <span className="text-green-700">Next Chapter :</span> {title}

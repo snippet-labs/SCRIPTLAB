@@ -33,12 +33,14 @@ pre.line-numbers > code {
   text-align: right;
 }
 pre::-webkit-scrollbar {
-  height: 8px;
+  height: 3px;
   width: 8px;
 }
 pre::-webkit-scrollbar-track {
   background: #1e1e1e;
-  border-radius: 4px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  border-radius: 6px;
 }
 pre::-webkit-scrollbar-thumb {
   background: #666;
@@ -168,6 +170,12 @@ body {
 }
 .snippet-dark {
   @apply border-1 border-green-600 rounded-md;
+}
+.token-dark {
+  @apply p-1 rounded-md bg-green-900 text-white;
+}
+.token-light {
+  @apply p-1 rounded-md bg-green-600 text-black;
 }
 
 /* INFORMATION BLOCK */
