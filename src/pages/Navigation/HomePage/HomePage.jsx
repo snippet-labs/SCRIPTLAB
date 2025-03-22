@@ -14,16 +14,13 @@ import Button from '../../../utils/Button/Button';
 import CodeHighlighter from '../../../utils/CodeHighlighter/CodeHighlighter';
 import Console from '../../../utils/Console/Console';
 
-
 // FRAMER MOTION
 import { motion, useAnimation, useInView } from 'framer-motion';
 
 // LOTTIE
 import Homelottie from '../../../../public/lottie/Homelottie.json';
 
-// REACT SYNTAX HIGHLIGHTER
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import { atomOneDark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+// CODE SNIPPET
 import { HOME_PAGE } from './CodeSnippet';
 
 // CONSTANTS
@@ -35,7 +32,6 @@ const CONTAINER_VARIANTS = {
     transition: { duration: 0.6 },
   },
 };
-
 
 // THEME TOGGLER
 const getThemeStyles = (theme) => ({

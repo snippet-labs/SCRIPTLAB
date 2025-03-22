@@ -13,7 +13,7 @@ const getThemeStyles = (theme) => ({
   link: theme === 'light' ? 'link-light' : 'link-dark',
 });
 
-const Pagination = ({ to }) => {
+const Pagination = ({ to, previous }) => {
   // THEME STORE
   const theme = useThemeStore((state) => state.theme);
 
@@ -24,7 +24,7 @@ const Pagination = ({ to }) => {
   const PaginationSection = useMemo(
     () => (
       <div className="pagination">
-        <Link to="/" className={themeStyles.link}>
+        <Link to={previous} className={themeStyles.link}>
           <MdOutlineArrowBackIos size={25} />
         </Link>
         <Link to={to} className={themeStyles.link}>

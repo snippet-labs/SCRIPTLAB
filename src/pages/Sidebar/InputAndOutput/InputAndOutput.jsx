@@ -7,9 +7,12 @@ import useThemeStore from '../../../utils/Store/themeStore';
 // COMPONENTS
 import Footer from '../../../components/Footer/Footer';
 import CodeHighlighter from '../../../utils/CodeHighlighter/CodeHighlighter';
+import Pagination from '../../../utils/Pagination/Pagination';
+import Chapter from '../../../utils/Chapter/Chapter';
 
 // CODE SNIPPET
 import { INPUT_AND_OUTPUT } from './CodeSnippet';
+import { Link } from 'react-router-dom';
 
 const CONTAINER_VARIANTS = {
   hidden: { opacity: 0, y: 50 },
@@ -87,7 +90,7 @@ const InputAndOutput = () => {
             </div>
           </div>
         </div>
-        <h3 className={`${themeStyles.headlineFour} pl-1.5 border-l-4 border-transparent`}>
+        <h3 className={`${themeStyles.headlineFour} pl-1.5 border-l-3 border-transparent`}>
           CONSOLE OUTPUT
         </h3>
         <div className="border-l-3 border-transparent pl-1.5">
@@ -128,7 +131,7 @@ const InputAndOutput = () => {
               />
             </div>
           </div>
-          <div className="overflow-x-auto mb-3">
+          <div className="overflow-x-auto mb-5">
             <div className="min-w-full">
               <CodeHighlighter
                 code={INPUT_AND_OUTPUT.OUTPUT_ERROR}
@@ -138,6 +141,63 @@ const InputAndOutput = () => {
             </div>
           </div>
         </div>
+        <h2 className={`${themeStyles.headlineTwo} border-l-3 border-green-600 pl-1.5 mb-3`}>
+          BROWSER DIALOGS FOR INPUT AND OUTPUT
+        </h2>
+        <div className="border-l-3 border-transparent pl-1.5">
+          <p className={`${themeStyles.paragraph}`}>
+            Javascript provides a set of functions built in, helps interact directly with the users
+            through modal dialog boxes :
+          </p>
+          <ul>
+            <li className={`${themeStyles.paragraph}`}>
+              <span className={`${themeStyles.token}`}>alert()</span> &nbsp; : Displays a simple
+              modal message to the user in the browser.
+            </li>
+          </ul>
+          <ul>
+            <li className={`${themeStyles.paragraph}`}>
+              <span className={`${themeStyles.token}`}>prompt()</span> &nbsp; : Opens a dialog box
+              that asks the user to input some text. The function returns the input as a string.
+            </li>
+          </ul>
+          <ul>
+            <li className={`${themeStyles.paragraph}`}>
+              <span className={`${themeStyles.token}`}>confirm()</span> &nbsp; : Shows a dialog box
+              with OK and Cancel options, returning{' '}
+              <span className={`${themeStyles.token}`}>true</span> if the user selects OK and{' '}
+              <span className={`${themeStyles.token}`}>false</span> otherwise.
+            </li>
+          </ul>
+          <div className="overflow-x-auto mb-5">
+            <div className="min-w-full">
+              <CodeHighlighter
+                code={INPUT_AND_OUTPUT.OUTPUT_PROMPT_CONFIRM_ALERT}
+                language="javascript"
+                title="username.js"
+              />
+            </div>
+          </div>
+        </div>
+        <h2 className={`${themeStyles.headlineTwo} border-l-3 border-green-600 pl-1.5 mb-3 mt-3`}>
+          MANIPULATING THE DOM FOR INPUT AND OUTPUT
+        </h2>
+        <p className={`${themeStyles.paragraph}  border-l-3 border-transparent pl-1.5 mb-3`}>
+          Hold on ... hold on, we have time for this now ! You will learn more on this in upcoming
+          chapter say in{' '}
+          <Link to={'/'} className="inline">
+            <span className="text-blue-500 hover:cursor-pointer animate-pulse transition-all">
+              Getting started with DOM
+            </span>
+          </Link>{' '}
+          &{' '}
+          <Link to={'/'}>
+            <span className="text-blue-500 hover:cursor-pointer animate-pulse transition-all">
+              Mastering DOM.
+            </span>
+          </Link>{' '}
+          See you there !
+        </p>
       </div>
     ),
     [themeStyles]
@@ -152,6 +212,8 @@ const InputAndOutput = () => {
       animate={controls}
     >
       {InputAndOutputSection}
+      <Chapter title="Variables & Data Types" />
+      <Pagination to={'/'} previous={'/'} />
       <Footer />
     </motion.div>
   );
