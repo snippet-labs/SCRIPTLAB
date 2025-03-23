@@ -1,5 +1,7 @@
 import { useEffect, useRef, useMemo, useState, memo } from 'react';
 import { motion, useAnimation, useInView } from 'framer-motion';
+
+//ICONS
 import { FaInfoCircle } from 'react-icons/fa';
 
 // STORE

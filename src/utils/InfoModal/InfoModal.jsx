@@ -1,5 +1,9 @@
 import { useMemo } from 'react';
+
+//ICONS
 import { FaTimes } from 'react-icons/fa';
+
+//STORE
 import useThemeStore from '../../utils/Store/themeStore';
 const getThemeStyles = (theme) => ({
   headlineThree:
