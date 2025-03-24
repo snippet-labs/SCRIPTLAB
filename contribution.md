@@ -1,1 +1,1 @@
-### This is how to contribute
+### THIS IS HOW YOU CAN CONTRIBUTE TO THIS PROJECT

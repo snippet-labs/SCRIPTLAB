@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useMemo, memo, useCallback, useState } from 'react';
+import React, { useEffect, useRef, useMemo, memo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useAnimation, useInView } from 'framer-motion';
 
@@ -9,7 +9,8 @@ import { RiHome9Line } from 'react-icons/ri';
 // STORE
 import useThemeStore from '../../utils/Store/themeStore';
 
-// LOTTIE
+// CODE SNIPPET 
+import { CODE_EDITOR_DEFAULT } from './CodeSnippet';
 
 // COMPONENTS
 import UnderDevelopment from '.././../pages/UnderDevelopment';
@@ -23,6 +24,7 @@ const CONTAINER_VARIANTS = {
     transition: { duration: 0.6 },
   },
 };
+
 
 // THEME STYLE GENERATOR
 const getThemeStyles = (theme) => ({
@@ -50,8 +52,23 @@ const getThemeStyles = (theme) => ({
   cardButton: theme === 'light' ? 'bg-gray-300 text-black' : 'bg-gray-100',
 });
 
+// FUNCTION TO RUN THE CODE 
+const runCode = () => {
+  // CLEARING OUT THE DEFAULT CODE IN THE EDITOR
+};
+
+// FUNCTION TO TOGGLE THE TERMINAL
+const toggleTerminal = () => {
+
+}
+
 const CodeEditor = () => {
+  // APPLICATION STATES
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [code, setCode] = useState(CODE_EDITOR_DEFAULT);
+  const [output, setOutput] = useState('');
+  const [isTerminalOpen, setTerminalOpen] = useState(true);
+
   // THEME STORE
   const { theme, toggleTheme } = useThemeStore();
 
