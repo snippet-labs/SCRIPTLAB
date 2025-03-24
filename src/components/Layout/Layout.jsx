@@ -15,6 +15,7 @@ import { IoMdArrowDropleft } from 'react-icons/io';
 import { IoMdArrowDropright } from 'react-icons/io';
 import { FaLaptopCode } from 'react-icons/fa';
 
+
 // NAVIGATION COMPONENTS
 const Homepage = lazy(() => import('../../pages/Navigation/HomePage/HomePage'));
 const Errorpage = lazy(() => import('../../pages/ErrorPage'));
@@ -25,6 +26,7 @@ const Contact = lazy(() => import('../../pages/Navigation/Contact'));
 
 // SIDEBAR COMPONENTS
 const InputAndOutput = lazy(() => import('../../pages/Sidebar/InputAndOutput/InputAndOutput.jsx'));
+const Introduction = lazy(() => import('../../pages/Sidebar/Introduction'));
 
 // CONSTANTS
 const NAV_LINKS = [
@@ -292,6 +294,7 @@ const Layout = () => {
                     <Route path="/flashcards" element={<FlashCardsPage />} />
                     <Route path="/contact" element={<Contact />} />
                     <Route path="/io" element={<InputAndOutput />} />
+                    <Route path="/introduction" element={<Introduction />} />
                     <Route path="*" element={<Errorpage />} />
                   </Routes>
                 </div>
