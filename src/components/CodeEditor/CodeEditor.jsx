@@ -36,8 +36,8 @@ const getThemeStyles = (theme) => ({
     theme === 'light' ? 'headline-one headline-one-light' : 'headline-one headline-one-dark',
   headlineTwo:
     theme === 'light' ? 'headline-two headline-two-light' : 'headline-two headline-two-dark',
-  headlineFour:
-    theme === 'light' ? 'headline-four headline-four-light' : 'headline-four headline-four-dark',
+  headlineThree:
+    theme === 'light' ? 'headline-three headline-three-light' : 'headline-three headline-three-dark',
   paragraph: theme === 'light' ? 'paragraph-document-light' : 'paragraph-document-dark',
   nav: theme === 'light' ? 'bg-light border-black' : 'bg-dark border-zinc-500',
   navHover: theme === 'light' ? 'hover:border-gray-400' : 'hover:border-gray-300',
@@ -155,9 +155,9 @@ const CodeEditor = () => {
           <div className="lg:hidden flex  h-[500px] text-white p-4 items-center justify-center">
             <div className="flex items-center flex-col text-center space-y-4">
               <TbDeviceMobileCancel size={80} className={`${themeStyles.icon}`} />
-              <h1 className={`${themeStyles.headlineFour}`}>ALERT</h1>
+              <h1 className={`${themeStyles.headlineThree}`}>ALERT</h1>
               <p className={`${themeStyles.text}`}>
-                <span>scriptground</span> is optimized to be used in larger screens. Please move to a large screen so that you can experience the best of what you we have built for you.
+                <span className='font-cursive'>scriptground</span> is optimized to be used in larger screens. Please move to a large screen so that you can experience the best of what we have built for you.
               </p>
             </div>
           </div>
