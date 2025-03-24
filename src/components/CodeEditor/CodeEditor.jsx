@@ -9,7 +9,7 @@ import { RiHome9Line } from 'react-icons/ri';
 // STORE
 import useThemeStore from '../../utils/Store/themeStore';
 
-// CODE SNIPPET 
+// CODE SNIPPET
 import { CODE_EDITOR_DEFAULT } from './CodeSnippet';
 
 // COMPONENTS
@@ -24,7 +24,6 @@ const CONTAINER_VARIANTS = {
     transition: { duration: 0.6 },
   },
 };
-
 
 // THEME STYLE GENERATOR
 const getThemeStyles = (theme) => ({
@@ -52,36 +51,38 @@ const getThemeStyles = (theme) => ({
   cardButton: theme === 'light' ? 'bg-gray-300 text-black' : 'bg-gray-100',
 });
 
-// FUNCTION TO RUN THE CODE 
+// FUNCTION TO RUN THE CODE
 const runCode = () => {
   // CLEARING OUT THE DEFAULT CODE IN THE EDITOR
   setOutput('');
   const originalConsoleLog = console.log;
   const logs = [];
 
-  // OVERRIDING CONSOLE.LOG TO CAPTURE THE OUTPUT 
+  // OVERRIDING CONSOLE.LOG TO CAPTURE THE OUTPUT
   console.log = (...args) => {
-    logs.push(args.map(arg =>
-      typeof arg === 'object' ? JSON.stringify(arg, null, 2) : String(arg)
-    ).join(' '));
+    logs.push(
+      args
+        .map((arg) => (typeof arg === 'object' ? JSON.stringify(arg, null, 2) : String(arg)))
+        .join(' ')
+    );
   };
 
   try {
-    // EXECUTE THE CODE 
+    // EXECUTE THE CODE
     eval(code);
     setOutput(logs.join('\n'));
-  } catch(error) {
+  } catch (error) {
     setOutput(`ERROR: ${error.message}`);
   } finally {
-    // RESTORING THE ORIGINAL DEFAULT CODE 
+    // RESTORING THE ORIGINAL DEFAULT CODE
     console.log = originalConsoleLog;
   }
 };
 
 // FUNCTION TO TOGGLE THE TERMINAL
 const toggleTerminal = () => {
-
-}
+  setTerminalOpen(!isTerminalOpen);
+};
 
 const CodeEditor = () => {
   // APPLICATION STATES
