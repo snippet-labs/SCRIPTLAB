@@ -1,12 +1,15 @@
 import React, { useEffect, useRef, useMemo, memo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useAnimation, useInView } from 'framer-motion';
+import Editor from '@monaco-editor/react';
 
 // ICONS
 import { FaSun, FaMoon } from 'react-icons/fa';
 import { RiHome9Line } from 'react-icons/ri';
 import { TbDeviceMobileCancel } from 'react-icons/tb';
 import { FaPlay } from 'react-icons/fa';
+import { IoTerminal } from 'react-icons/io5';
+import { IoSettings } from 'react-icons/io5';
 
 // STORE
 import useThemeStore from '../../utils/Store/themeStore';
@@ -15,7 +18,6 @@ import useThemeStore from '../../utils/Store/themeStore';
 import { CODE_EDITOR_DEFAULT } from './CodeSnippet';
 
 // COMPONENTS
-import UnderDevelopment from '.././../pages/UnderDevelopment';
 import Footer from '../Footer/Footer';
 
 // CONSTANTS
@@ -34,6 +36,8 @@ const getThemeStyles = (theme) => ({
     theme === 'light' ? 'headline-one headline-one-light' : 'headline-one headline-one-dark',
   headlineTwo:
     theme === 'light' ? 'headline-two headline-two-light' : 'headline-two headline-two-dark',
+  headlineFour:
+    theme === 'light' ? 'headline-four headline-four-light' : 'headline-four headline-four-dark',
   paragraph: theme === 'light' ? 'paragraph-document-light' : 'paragraph-document-dark',
   nav: theme === 'light' ? 'bg-light border-black' : 'bg-dark border-zinc-500',
   navHover: theme === 'light' ? 'hover:border-gray-400' : 'hover:border-gray-300',
@@ -43,45 +47,48 @@ const getThemeStyles = (theme) => ({
   icon: theme === 'light' ? 'text-green-800' : 'text-green-300',
 });
 
-// FUNCTION TO RUN THE CODE
-const runCode = () => {
-  // CLEARING OUT THE DEFAULT CODE IN THE EDITOR
-  setOutput('');
-  const originalConsoleLog = console.log;
-  const logs = [];
-
-  // OVERRIDING CONSOLE.LOG TO CAPTURE THE OUTPUT
-  console.log = (...args) => {
-    logs.push(
-      args
-        .map((arg) => (typeof arg === 'object' ? JSON.stringify(arg, null, 2) : String(arg)))
-        .join(' ')
-    );
-  };
-
-  try {
-    // EXECUTE THE CODE
-    eval(code);
-    setOutput(logs.join('\n'));
-  } catch (error) {
-    setOutput(`ERROR: ${error.message}`);
-  } finally {
-    // RESTORING THE ORIGINAL DEFAULT CODE
-    console.log = originalConsoleLog;
-  }
-};
-
-// FUNCTION TO TOGGLE THE TERMINAL
-const toggleTerminal = () => {
-  setTerminalOpen(!isTerminalOpen);
-};
-
 const CodeEditor = () => {
   // APPLICATION STATES
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [code, setCode] = useState(CODE_EDITOR_DEFAULT);
   const [output, setOutput] = useState('');
-  const [isTerminalOpen, setTerminalOpen] = useState(true);
+  const [isTerminalOpen, setIsTerminalOpen] = useState(true);
+
+  // FUNCTION TO RUN THE CODE
+  const runCode = () => {
+    setOutput('');
+    const originalConsoleLog = console.log;
+    const logs = [];
+
+    // REPLACING THE DEFAULT CODE SNIPPET
+    console.log = (...args) => {
+      logs.push(
+        args
+          .map((arg) => (typeof arg === 'object' ? JSON.stringify(arg, null, 2) : String(arg)))
+          .join(' ')
+      );
+    };
+
+    try {
+      // CODE EXECUTION
+      eval(code);
+      setOutput(logs.join('\n'));
+    } catch (error) {
+      setOutput(`Error: ${error.message}`);
+    } finally {
+      // RESTORING THE ORIGINAL CODE
+      console.log = originalConsoleLog;
+    }
+  };
+
+  // NEW: Automatically run code on every change
+  useEffect(() => {
+    runCode();
+  }, [code]);
+
+  // FUNCTION TO TOGGLE THE TERMINAL
+  const toggleTerminal = () => {
+    setIsTerminalOpen(!isTerminalOpen);
+  };
 
   // THEME STORE
   const { theme, toggleTheme } = useThemeStore();
@@ -144,37 +151,77 @@ const CodeEditor = () => {
       <>
         {CodeEditorNavigation}
         <div className="pt-30 px-4 md:px-9 lg:px-9">
-          {/* WARNING FOR SMALLER SCREEN DISPLAYS */}
-          <div
-            className={`${themeStyles.background} ${themeStyles.text} lg:hidden min-h-[500px] p-4 flex items-center justify-center`}
-          >
-            <div className="text-center space-y-4">
-              <TbDeviceMobileCancel size={90} className={`${themeStyles.icon} m-auto mb-5`} />
+          {/* MOBILE WARNING */}
+          <div className="lg:hidden flex  h-[500px] text-white p-4 items-center justify-center">
+            <div className="flex items-center flex-col text-center space-y-4">
+              <TbDeviceMobileCancel size={80} className={`${themeStyles.icon}`} />
+              <h1 className={`${themeStyles.headlineFour}`}>ALERT</h1>
               <p className={`${themeStyles.text}`}>
-                {' '}
-                scriptground is optimized for desktop screens only. To use it to it's full potential
-                please use a larger screen for the best experience we intended for you have !
+                <span>scriptground</span> is optimized to be used in larger screens. Please move to a large screen so that you can experience the best of what you we have built for you.
               </p>
             </div>
           </div>
-          {/* DESKTOP SCREEN */}
-          <div className={`hidden lg:flex h-screen text-white pb-5`}>
+
+          {/* DESKTOP EDITOR */}
+          <div className="hidden lg:flex h-screen text-white mb-5">
             {/* SIDEBAR */}
-            <div className={`w-16 bg-green-900 p-4 flex flex-col items-center gap-6 rounded-xl mr-4`}>
+            <div className="w-16 bg-green-900 p-4 flex flex-col items-center gap-6 rounded-xl mr-2">
               <button
-                onClick={runCode}
-                className={`p-2 hover:text-black hover:cursor-pointer rounded-full transition-colors`}
-                title="CodeRunner"
+                onClick={toggleTerminal}
+                className={`p-2 rounded-lg hover:cursor-pointer transition-colors ${
+                  isTerminalOpen ? 'text-white' : 'text-black'
+                }`}
+                title="Toggle Terminal"
               >
-                <FaPlay size={18}/>
+                <IoTerminal className="w-6 h-6" />
               </button>
+            </div>
+
+            {/* MAIN CONTENT */}
+            <div className="flex-1 flex flex-col gap-2">
+              {/* EDITOR */}
+              <div
+                className={`${isTerminalOpen ? 'h-2/3' : 'h-[900px]'} transition-all duration-300 overflow-hidden border-1 border-white rounded-xl`}
+              >
+                <Editor
+                  height="100%"
+                  defaultLanguage="javascript"
+                  theme="vs-dark"
+                  value={code}
+                  onChange={(value) => setCode(value || '')}
+                  options={{
+                    minimap: { enabled: false },
+                    fontSize: 14,
+                    padding: { top: 20 },
+                    scrollBeyondLastLine: false,
+                    lineNumbers: 'on',
+                    roundedSelection: false,
+                    automaticLayout: true,
+                  }}
+                  className="rounded-xl overflow-hidden"
+                />
+              </div>
+
+              {/* TERMINAL */}
+              <motion.div
+                className="bg-green-900 p-4 font-mono text-sm overflow-auto rounded-xl transition-all duration-300"
+                animate={isTerminalOpen ? { height: '33vh', opacity: 1 } : { height: '7vh', opacity: 1 }}
+                initial={{ height: '33vh', opacity: 1 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className="flex items-center gap-2 mb-3 text-gray-400">
+                  <IoTerminal className="w-4 h-4" />
+                  <span>OUTPUT</span>
+                </div>
+                <pre className="whitespace-pre-wrap">{output}</pre>
+              </motion.div>
             </div>
           </div>
           <Footer />
         </div>
       </>
     ),
-    [themeStyles]
+    [themeStyles, isTerminalOpen, output]
   );
   return (
     <motion.div
