@@ -165,11 +165,11 @@ const CodeEditor = () => {
           {/* DESKTOP EDITOR */}
           <div className="hidden lg:flex h-screen text-white mb-5">
             {/* SIDEBAR */}
-            <div className="w-16 bg-green-900 p-4 flex flex-col items-center gap-6 rounded-xl mr-2">
+            <div className="w-12 bg-green-950/80 p-4 flex flex-col items-center gap-6 rounded-xl mr-2">
               <button
                 onClick={toggleTerminal}
                 className={`p-2 rounded-lg hover:cursor-pointer transition-colors ${
-                  isTerminalOpen ? 'text-white' : 'text-black'
+                  isTerminalOpen ? 'text-white' : 'text-gray-800'
                 }`}
                 title="Toggle Terminal"
               >
@@ -191,8 +191,8 @@ const CodeEditor = () => {
                   onChange={(value) => setCode(value || '')}
                   options={{
                     minimap: { enabled: false },
-                    fontSize: 14,
-                    padding: { top: 20 },
+                    fontSize: 12,
+                    padding: { top: 30 },
                     scrollBeyondLastLine: false,
                     lineNumbers: 'on',
                     roundedSelection: false,
@@ -204,12 +204,12 @@ const CodeEditor = () => {
 
               {/* TERMINAL */}
               <motion.div
-                className="bg-green-900 p-4 font-mono text-sm overflow-auto rounded-xl transition-all duration-300"
+                className=" bg-green-950/80 p-4 font-mono text-sm overflow-auto rounded-xl transition-all duration-300"
                 animate={isTerminalOpen ? { height: '33vh', opacity: 1 } : { height: '7vh', opacity: 1 }}
                 initial={{ height: '33vh', opacity: 1 }}
                 transition={{ duration: 0.3 }}
               >
-                <div className="flex items-center gap-2 mb-3 text-gray-400">
+                <div className="flex items-center gap-2 mb-3 text-white">
                   <IoTerminal className="w-4 h-4" />
                   <span>OUTPUT</span>
                 </div>
