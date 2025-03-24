@@ -64,6 +64,17 @@ const runCode = () => {
     logs.push(args.map(arg =>
       typeof arg === 'object' ? JSON.stringify(arg, null, 2) : String(arg)
     ).join(' '));
+  };
+
+  try {
+    // EXECUTE THE CODE 
+    eval(code);
+    setOutput(logs.join('\n'));
+  } catch(error) {
+    setOutput(`ERROR: ${error.message}`);
+  } finally {
+    // RESTORING THE ORIGINAL DEFAULT CODE 
+    console.log = originalConsoleLog;
   }
 };
 
