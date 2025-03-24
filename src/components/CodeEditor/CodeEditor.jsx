@@ -43,8 +43,8 @@ const getThemeStyles = (theme) => ({
   navHover: theme === 'light' ? 'hover:border-gray-400' : 'hover:border-gray-300',
   text: theme === 'light' ? 'text-black' : 'text-white',
   background: theme === 'light' ? 'bg-light' : 'bg-dark',
-  infoBlock: theme === 'light' ? 'infoblock-light' : 'infoblock-dark',
   icon: theme === 'light' ? 'text-green-800' : 'text-green-300',
+  editor: theme === 'light' ? 'border-1 border-transparent' : 'border-1 border-gray-500',
 });
 
 const CodeEditor = () => {
@@ -80,7 +80,7 @@ const CodeEditor = () => {
     }
   };
 
-  // NEW: Automatically run code on every change
+  // AUTOMATIC COMPILATION ON CODE CHANGE
   useEffect(() => {
     runCode();
   }, [code]);
@@ -181,7 +181,7 @@ const CodeEditor = () => {
             <div className="flex-1 flex flex-col gap-2">
               {/* EDITOR */}
               <div
-                className={`${isTerminalOpen ? 'h-2/3' : 'h-[900px]'} transition-all duration-300 overflow-hidden border-1 border-white rounded-xl`}
+                className={`${isTerminalOpen ? 'h-2/3' : 'h-[900px]'} ${themeStyles.editor} transition-all duration-300 overflow-hidden rounded-xl`}
               >
                 <Editor
                   height="100%"
