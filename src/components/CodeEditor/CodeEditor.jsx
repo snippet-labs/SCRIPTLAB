@@ -5,6 +5,8 @@ import { motion, useAnimation, useInView } from 'framer-motion';
 // ICONS
 import { FaSun, FaMoon } from 'react-icons/fa';
 import { RiHome9Line } from 'react-icons/ri';
+import { TbDeviceMobileCancel } from 'react-icons/tb';
+import { FaPlay } from 'react-icons/fa';
 
 // STORE
 import useThemeStore from '../../utils/Store/themeStore';
@@ -14,6 +16,7 @@ import { CODE_EDITOR_DEFAULT } from './CodeSnippet';
 
 // COMPONENTS
 import UnderDevelopment from '.././../pages/UnderDevelopment';
+import Footer from '../Footer/Footer';
 
 // CONSTANTS
 const CONTAINER_VARIANTS = {
@@ -35,20 +38,9 @@ const getThemeStyles = (theme) => ({
   nav: theme === 'light' ? 'bg-light border-black' : 'bg-dark border-zinc-500',
   navHover: theme === 'light' ? 'hover:border-gray-400' : 'hover:border-gray-300',
   text: theme === 'light' ? 'text-black' : 'text-white',
-  hover: theme === 'light' ? 'hover:bg-gray-300' : 'hover:bg-zinc-800',
-  sidebar:
-    theme === 'light'
-      ? 'bg-light border-black *: hover:bg-gray-300'
-      : 'bg-zinc-850 border-gray-500',
-  sidebarToggleButton:
-    theme === 'light'
-      ? 'transition-all duration-75 text-black hover:text-green-600 cursor-pointer'
-      : 'transition-all duration-75 text-white hover:text-green-600 cursor-pointer',
   background: theme === 'light' ? 'bg-light' : 'bg-dark',
   infoBlock: theme === 'light' ? 'infoblock-light' : 'infoblock-dark',
-  capsule: theme === 'light' ? 'bg-green-800/30' : 'bg-green-800/30',
-  capsuleContent: theme === 'light' ? 'text-green-600' : 'text-green-800',
-  cardButton: theme === 'light' ? 'bg-gray-300 text-black' : 'bg-gray-100',
+  icon: theme === 'light' ? 'text-green-800' : 'text-green-300',
 });
 
 // FUNCTION TO RUN THE CODE
@@ -152,7 +144,33 @@ const CodeEditor = () => {
       <>
         {CodeEditorNavigation}
         <div className="pt-30 px-4 md:px-9 lg:px-9">
-          <UnderDevelopment />
+          {/* WARNING FOR SMALLER SCREEN DISPLAYS */}
+          <div
+            className={`${themeStyles.background} ${themeStyles.text} lg:hidden min-h-[500px] p-4 flex items-center justify-center`}
+          >
+            <div className="text-center space-y-4">
+              <TbDeviceMobileCancel size={90} className={`${themeStyles.icon} m-auto mb-5`} />
+              <p className={`${themeStyles.text}`}>
+                {' '}
+                scriptground is optimized for desktop screens only. To use it to it's full potential
+                please use a larger screen for the best experience we intended for you have !
+              </p>
+            </div>
+          </div>
+          {/* DESKTOP SCREEN */}
+          <div className={`hidden lg:flex h-screen text-white pb-5`}>
+            {/* SIDEBAR */}
+            <div className={`w-16 bg-green-900 p-4 flex flex-col items-center gap-6 rounded-xl mr-4`}>
+              <button
+                onClick={runCode}
+                className={`p-2 hover:text-black hover:cursor-pointer rounded-full transition-colors`}
+                title="CodeRunner"
+              >
+                <FaPlay size={18}/>
+              </button>
+            </div>
+          </div>
+          <Footer />
         </div>
       </>
     ),
