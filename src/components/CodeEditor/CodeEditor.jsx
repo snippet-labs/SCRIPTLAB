@@ -55,6 +55,16 @@ const getThemeStyles = (theme) => ({
 // FUNCTION TO RUN THE CODE 
 const runCode = () => {
   // CLEARING OUT THE DEFAULT CODE IN THE EDITOR
+  setOutput('');
+  const originalConsoleLog = console.log;
+  const logs = [];
+
+  // OVERRIDING CONSOLE.LOG TO CAPTURE THE OUTPUT 
+  console.log = (...args) => {
+    logs.push(args.map(arg =>
+      typeof arg === 'object' ? JSON.stringify(arg, null, 2) : String(arg)
+    ).join(' '));
+  }
 };
 
 // FUNCTION TO TOGGLE THE TERMINAL
