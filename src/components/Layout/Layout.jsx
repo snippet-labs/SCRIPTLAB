@@ -119,7 +119,7 @@ const Layout = () => {
           {link.name}
         </NavLink>
       )),
-    [theme, themeStyles.text]
+    [themeStyles.navHover, themeStyles.text]
   );
 
   return (

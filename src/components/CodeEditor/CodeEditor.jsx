@@ -1,18 +1,24 @@
-import React, { useEffect, useRef, useMemo, memo, useCallback, useState } from 'react';
+import React, { useEffect, useRef, useMemo, memo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useAnimation, useInView } from 'framer-motion';
+import Editor from '@monaco-editor/react';
 
 // ICONS
 import { FaSun, FaMoon } from 'react-icons/fa';
 import { RiHome9Line } from 'react-icons/ri';
+import { TbDeviceMobileCancel } from 'react-icons/tb';
+import { FaPlay } from 'react-icons/fa';
+import { IoTerminal } from 'react-icons/io5';
+import { IoSettings } from 'react-icons/io5';
 
 // STORE
 import useThemeStore from '../../utils/Store/themeStore';
 
-// LOTTIE
+// CODE SNIPPET
+import { CODE_EDITOR_DEFAULT } from './CodeSnippet';
 
 // COMPONENTS
-import UnderDevelopment from '.././../pages/UnderDevelopment';
+import Footer from '../Footer/Footer';
 
 // CONSTANTS
 const CONTAINER_VARIANTS = {
@@ -30,28 +36,60 @@ const getThemeStyles = (theme) => ({
     theme === 'light' ? 'headline-one headline-one-light' : 'headline-one headline-one-dark',
   headlineTwo:
     theme === 'light' ? 'headline-two headline-two-light' : 'headline-two headline-two-dark',
+  headlineThree:
+    theme === 'light' ? 'headline-three headline-three-light' : 'headline-three headline-three-dark',
   paragraph: theme === 'light' ? 'paragraph-document-light' : 'paragraph-document-dark',
   nav: theme === 'light' ? 'bg-light border-black' : 'bg-dark border-zinc-500',
   navHover: theme === 'light' ? 'hover:border-gray-400' : 'hover:border-gray-300',
   text: theme === 'light' ? 'text-black' : 'text-white',
-  hover: theme === 'light' ? 'hover:bg-gray-300' : 'hover:bg-zinc-800',
-  sidebar:
-    theme === 'light'
-      ? 'bg-light border-black *: hover:bg-gray-300'
-      : 'bg-zinc-850 border-gray-500',
-  sidebarToggleButton:
-    theme === 'light'
-      ? 'transition-all duration-75 text-black hover:text-green-600 cursor-pointer'
-      : 'transition-all duration-75 text-white hover:text-green-600 cursor-pointer',
   background: theme === 'light' ? 'bg-light' : 'bg-dark',
-  infoBlock: theme === 'light' ? 'infoblock-light' : 'infoblock-dark',
-  capsule: theme === 'light' ? 'bg-green-800/30' : 'bg-green-800/30',
-  capsuleContent: theme === 'light' ? 'text-green-600' : 'text-green-800',
-  cardButton: theme === 'light' ? 'bg-gray-300 text-black' : 'bg-gray-100',
+  icon: theme === 'light' ? 'text-green-800' : 'text-green-300',
+  editor: theme === 'light' ? 'border-1 border-transparent' : 'border-1 border-gray-500',
 });
 
 const CodeEditor = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  // APPLICATION STATES
+  const [code, setCode] = useState(CODE_EDITOR_DEFAULT);
+  const [output, setOutput] = useState('');
+  const [isTerminalOpen, setIsTerminalOpen] = useState(true);
+
+  // FUNCTION TO RUN THE CODE
+  const runCode = () => {
+    setOutput('');
+    const originalConsoleLog = console.log;
+    const logs = [];
+
+    // REPLACING THE DEFAULT CODE SNIPPET
+    console.log = (...args) => {
+      logs.push(
+        args
+          .map((arg) => (typeof arg === 'object' ? JSON.stringify(arg, null, 2) : String(arg)))
+          .join(' ')
+      );
+    };
+
+    try {
+      // CODE EXECUTION
+      eval(code);
+      setOutput(logs.join('\n'));
+    } catch (error) {
+      setOutput(`Error: ${error.message}`);
+    } finally {
+      // RESTORING THE ORIGINAL CODE
+      console.log = originalConsoleLog;
+    }
+  };
+
+  // AUTOMATIC COMPILATION ON CODE CHANGE
+  useEffect(() => {
+    runCode();
+  }, [code]);
+
+  // FUNCTION TO TOGGLE THE TERMINAL
+  const toggleTerminal = () => {
+    setIsTerminalOpen(!isTerminalOpen);
+  };
+
   // THEME STORE
   const { theme, toggleTheme } = useThemeStore();
 
@@ -113,11 +151,77 @@ const CodeEditor = () => {
       <>
         {CodeEditorNavigation}
         <div className="pt-30 px-4 md:px-9 lg:px-9">
-          <UnderDevelopment />
+          {/* MOBILE WARNING */}
+          <div className="lg:hidden flex  h-[500px] text-white p-4 items-center justify-center">
+            <div className="flex items-center flex-col text-center space-y-4">
+              <TbDeviceMobileCancel size={80} className={`${themeStyles.icon}`} />
+              <h1 className={`${themeStyles.headlineThree}`}>ALERT</h1>
+              <p className={`${themeStyles.text}`}>
+                <span className='font-cursive'>scriptground</span> is optimized to be used in larger screens. Please move to a large screen so that you can experience the best of what we have built for you.
+              </p>
+            </div>
+          </div>
+
+          {/* DESKTOP EDITOR */}
+          <div className="hidden lg:flex h-screen text-white mb-5">
+            {/* SIDEBAR */}
+            <div className="w-12 bg-green-950/80 p-4 flex flex-col items-center gap-6 rounded-xl mr-2">
+              <button
+                onClick={toggleTerminal}
+                className={`p-2 rounded-lg hover:cursor-pointer transition-colors ${
+                  isTerminalOpen ? 'text-white' : 'text-gray-800'
+                }`}
+                title="Toggle Terminal"
+              >
+                <IoTerminal className="w-6 h-6" />
+              </button>
+            </div>
+
+            {/* MAIN CONTENT */}
+            <div className="flex-1 flex flex-col gap-2">
+              {/* EDITOR */}
+              <div
+                className={`${isTerminalOpen ? 'h-2/3' : 'h-[900px]'} ${themeStyles.editor} transition-all duration-300 overflow-hidden rounded-xl`}
+              >
+                <Editor
+                  height="100%"
+                  defaultLanguage="javascript"
+                  theme="vs-dark"
+                  value={code}
+                  onChange={(value) => setCode(value || '')}
+                  options={{
+                    minimap: { enabled: false },
+                    fontSize: 12,
+                    padding: { top: 30 },
+                    scrollBeyondLastLine: false,
+                    lineNumbers: 'on',
+                    roundedSelection: false,
+                    automaticLayout: true,
+                  }}
+                  className="rounded-xl overflow-hidden"
+                />
+              </div>
+
+              {/* TERMINAL */}
+              <motion.div
+                className=" bg-green-950/80 p-4 font-mono text-sm overflow-auto rounded-xl transition-all duration-300"
+                animate={isTerminalOpen ? { height: '33vh', opacity: 1 } : { height: '7vh', opacity: 1 }}
+                initial={{ height: '33vh', opacity: 1 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className="flex items-center gap-2 mb-3 text-white">
+                  <IoTerminal className="w-4 h-4" />
+                  <span>OUTPUT</span>
+                </div>
+                <pre className="whitespace-pre-wrap">{output}</pre>
+              </motion.div>
+            </div>
+          </div>
+          <Footer />
         </div>
       </>
     ),
-    [themeStyles]
+    [themeStyles, isTerminalOpen, output]
   );
   return (
     <motion.div
