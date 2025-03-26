@@ -84,7 +84,7 @@ const ErrorPage = () => {
       animate={controls}
       className="overflow-x-hidden"
     >
-      <div className="mb-15 md:mb-30 lg:mb-40">{ErrorSection}</div>
+      <div className="mb-30 md:mb-60 lg:mb-60">{ErrorSection}</div>
       {/* FOOTER */}
       <Footer />
     </motion.div>

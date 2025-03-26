@@ -1,6 +1,7 @@
-import { useState, useCallback, useMemo, memo, lazy } from 'react';
+import { useState, useCallback, useMemo, memo, lazy, Suspense } from 'react';
 import { Route, Routes, NavLink, useLocation, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import Loader from '../../utils/Loader/Loader.jsx';
 
 // STORE
 import useThemeStore from '../../utils/Store/themeStore.js';
@@ -14,7 +15,6 @@ import { FaSun, FaMoon } from 'react-icons/fa';
 import { IoMdArrowDropleft } from 'react-icons/io';
 import { IoMdArrowDropright } from 'react-icons/io';
 import { FaLaptopCode } from 'react-icons/fa';
-
 
 // NAVIGATION COMPONENTS
 const Homepage = lazy(() => import('../../pages/Navigation/HomePage/HomePage'));
@@ -288,15 +288,17 @@ const Layout = () => {
 
                 {/* PAGES ROUTES */}
                 <div className="mt-8 w-full overflow-x-hidden">
-                  <Routes>
-                    <Route path="/" element={<Homepage />} />
-                    <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
-                    <Route path="/flashcards" element={<FlashCardsPage />} />
-                    <Route path="/contact" element={<Contact />} />
-                    <Route path="/io" element={<InputAndOutput />} />
-                    <Route path="/introduction" element={<Introduction />} />
-                    <Route path="*" element={<Errorpage />} />
-                  </Routes>
+                  <Suspense fallback={<Loader/>}>
+                    <Routes>
+                      <Route path="/" element={<Homepage />} />
+                      <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+                      <Route path="/flashcards" element={<FlashCardsPage />} />
+                      <Route path="/contact" element={<Contact />} />
+                      <Route path="/io" element={<InputAndOutput />} />
+                      <Route path="/introduction" element={<Introduction />} />
+                      <Route path="*" element={<Errorpage />} />
+                    </Routes>
+                  </Suspense>
                 </div>
               </div>
             </div>
