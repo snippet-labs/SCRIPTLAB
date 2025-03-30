@@ -1,11 +1,9 @@
-import React, { useState, useEffect, useRef, useMemo, memo } from 'react';
+import { useState, useEffect, useRef, useMemo, memo } from 'react';
 import { motion, useAnimation, useInView } from 'framer-motion';
 
 // STORE
 import useThemeStore from '../../utils/Store/themeStore';
 
-// LOTTIE
-import Contactlottie from '../../../public/lottie/Contactlottie.json';
 
 // ICONS
 import { BsGithub } from 'react-icons/bs';
@@ -285,7 +283,7 @@ const Contact = () => {
               <div className="mb-4 p-3 bg-green-100 dark:bg-green-900/30 rounded flex items-center">
                 <FiCheckCircle className={`${themeStyles.successText} mr-2`} />
                 <span className={`${themeStyles.successText} text-sm rounded-md`}>
-                  Thank you for your feedback! We'll get back to you soon.
+                  Thank you for your feedback! We&apos;ll get back to you soon.
                 </span>
               </div>
             )}

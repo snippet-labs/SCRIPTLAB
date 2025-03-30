@@ -1,5 +1,5 @@
 import  { useState, useEffect, useRef } from 'react';
-
+import PropTypes from 'prop-types';
 // PRISMJS
 import Prism from 'prismjs';
 import 'prismjs/themes/prism-tomorrow.css';
@@ -66,6 +66,17 @@ const CodeHighlighter = ({ code, language, showLineNumbers = true, title }) => {
       </div>
     </div>
   );
+};
+
+CodeHighlighter.propTypes = {
+  code: PropTypes.string.isRequired,
+  language: PropTypes.string.isRequired,
+  showLineNumbers: PropTypes.bool,
+  title: PropTypes.string,
+};
+
+CodeHighlighter.defaultProps = {
+  showLineNumbers: true,
 };
 
 export default CodeHighlighter;

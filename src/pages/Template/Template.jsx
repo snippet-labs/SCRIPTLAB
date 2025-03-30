@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useMemo, memo } from 'react';
-import Lottie from 'lottie-react';
+import { useEffect, useRef, useMemo, memo } from 'react';
 import { motion, useAnimation, useInView } from 'framer-motion';
+import PropTypes from 'prop-types';
 
 // STORE
 import useThemeStore from '../../utils/Store/themeStore';
@@ -70,7 +70,7 @@ const Template = () => {
     }
   }, [inView, controls]);
 
-  // MEMOIZE ERROR CONTENT
+  // MEMOIZE TEMPLATE CONTENT
   const TemplateSection = useMemo(
     () => (
       <div className="flex flex-col">
@@ -92,6 +92,12 @@ const Template = () => {
       <Footer />
     </motion.div>
   );
+};
+
+//PROP VALIDATION
+Template.propTypes = {
+  //Props go here
+  // Example: propName: PropTypes.string.isRequired,
 };
 
 export default memo(Template);

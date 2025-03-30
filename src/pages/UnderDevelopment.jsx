@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useMemo, memo } from 'react';
+import { useEffect, useRef, useMemo, memo } from 'react';
 import { motion, useAnimation, useInView } from 'framer-motion';
 
 // STORE
@@ -70,7 +70,7 @@ const UnderDevelopment = () => {
           <h1 className={`${themeStyles.headlineOne} mb-1`}> STAY TUNED</h1>
           <h2 className={`${themeStyles.headlineTwo} mb-5`}> PAGE IS BEING DEVELOPED </h2>
           <p className={`${themeStyles.paragraph}`}>
-            We're working hard to bring you something amazing! This page is currently under
+            We&apos;re working hard to bring you something amazing! This page is currently under
             development, but it will be live soon.
           </p>
           <p className={`${themeStyles.infoBlock}`}> Meanwhile you take a tour of what we have already developed for you !</p>

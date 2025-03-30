@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-
+import { useEffect, useRef } from 'react';
+import PropTypes from 'prop-types';
 
 // PRISMJS
 import Prism from 'prismjs';
@@ -49,6 +49,15 @@ const Console = ({ message, language, showLineNumbers = true }) => {
       </div>
     </div>
   );
+};
+
+Console.propTypes = {
+  message: PropTypes.string.isRequired,
+  language: PropTypes.string.isRequired,
+  showLineNumbers: PropTypes.bool,
+};
+Console.defaultProps = {
+  showLineNumbers: true,
 };
 
 export default Console;

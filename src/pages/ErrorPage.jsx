@@ -1,5 +1,4 @@
-import React, { useEffect, useRef, useMemo, memo } from 'react';
-import Lottie from 'lottie-react';
+import { useEffect, useRef, useMemo, memo } from 'react';
 import { motion, useAnimation, useInView } from 'framer-motion';
 
 // STORE
