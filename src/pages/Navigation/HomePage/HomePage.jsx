@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useMemo, memo } from 'react';
+import { useRef, useEffect, useMemo, memo } from 'react';
 import Lottie from 'lottie-react';
 
 // STORE
@@ -100,7 +100,7 @@ const HomePage = () => {
         >
           LETS MAKE JAVASCRIPT EASIER
         </h2>
-        <p className={themeStyles.paragraph}>Let's get our hands dirty with JavaScript</p>
+        <p className={themeStyles.paragraph}>Let&apos;s get our hands dirty with JavaScript</p>
 
         <p className="paragraph-code">Your first JavaScript code:</p>
 
@@ -124,7 +124,7 @@ const HomePage = () => {
     () => (
       <div>
         <p className={themeStyles.paragraph}>
-          Let's make JavaScript easier and fun to learn. The best way to use this documentation is
+          Let&apos;s make JavaScript easier and fun to learn. The best way to use this documentation is
           to get going and writing code with the little help that you will get reading this
           documentation, or else if you know JavaScript, treat it like your companion.
         </p>

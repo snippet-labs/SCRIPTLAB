@@ -1,4 +1,6 @@
 import { useMemo } from 'react';
+import PropTypes from 'prop-types';
+
 
 //ICONS
 import { FaTimes } from 'react-icons/fa';
@@ -50,5 +52,14 @@ const InfoModal = ({ isVisible, onClose, content, heading }) => {
     </div>
   );
 };
+
+// PropTypes Definition
+InfoModal.propTypes = {
+  isVisible: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  content: PropTypes.string.isRequired,
+  heading: PropTypes.string.isRequired,
+};
+
 
 export default InfoModal;

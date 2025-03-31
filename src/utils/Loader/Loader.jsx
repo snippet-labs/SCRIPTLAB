@@ -1,4 +1,4 @@
-import { useMemo, React } from 'react';
+import { useMemo} from 'react';
 
 // STORE
 import useThemeStore from '../Store/themeStore';

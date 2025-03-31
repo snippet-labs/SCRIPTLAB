@@ -1,6 +1,6 @@
-import React, { useMemo, memo } from 'react';
+import { useMemo, memo } from 'react';
 import { Link } from 'react-router-dom';
-
+import PropTypes from 'prop-types';
 // STORE
 import useThemeStore from '../Store/themeStore';
 
@@ -36,6 +36,11 @@ const Pagination = ({ to, previous }) => {
   );
 
   return <div className="py-6">{PaginationSection}</div>;
+};
+
+Pagination.propTypes = {
+  to: PropTypes.string.isRequired,
+  previous: PropTypes.string.isRequired,
 };
 
 export default memo(Pagination);

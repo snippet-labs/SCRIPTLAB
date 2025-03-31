@@ -1,11 +1,9 @@
-import React, { useMemo, memo } from 'react';
-import Lottie from 'lottie-react';
+import { useMemo, memo } from 'react';
+import PropTypes from 'prop-types';
 
 // STORE
 import useThemeStore from '../Store/themeStore';
 
-// LOTTIE
-import Footerlottie from '../../../public/lottie/Footerlottie.json';
 
 // THEME TOGGLER
 const getThemeStyles = (theme) => ({
@@ -32,6 +30,11 @@ const Chapter = ({ title }) => {
   ));
 
   return <div> {ChapterSection} </div>;
+};
+
+Chapter.propTypes = {
+  content: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 export default memo(Chapter);

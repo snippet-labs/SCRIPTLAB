@@ -1,4 +1,4 @@
-import { useEffect, useRef, React, useMemo, memo } from 'react';
+import { useEffect, useRef,useMemo, memo } from 'react';
 import { Link } from 'react-router-dom';
 import packages from '../../package.json';
 

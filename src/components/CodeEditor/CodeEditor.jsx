@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useMemo, memo, useState } from 'react';
+import { useEffect, useRef, useMemo, memo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useAnimation, useInView } from 'framer-motion';
 import Editor from '@monaco-editor/react';
@@ -7,9 +7,7 @@ import Editor from '@monaco-editor/react';
 import { FaSun, FaMoon } from 'react-icons/fa';
 import { RiHome9Line } from 'react-icons/ri';
 import { TbDeviceMobileCancel } from 'react-icons/tb';
-import { FaPlay } from 'react-icons/fa';
 import { IoTerminal } from 'react-icons/io5';
-import { IoSettings } from 'react-icons/io5';
 
 // STORE
 import useThemeStore from '../../utils/Store/themeStore';

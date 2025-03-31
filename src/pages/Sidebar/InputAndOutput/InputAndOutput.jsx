@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useMemo, memo } from 'react';
+import { useEffect, useRef, useMemo, memo } from 'react';
 import { motion, useAnimation, useInView } from 'framer-motion';
 
 // STORE
@@ -76,7 +76,7 @@ const InputAndOutput = () => {
           CONSOLE INPUT
         </h3>
         <p className={`${themeStyles.paragraph} border-l-3 border-transparent pl-1.5`}>
-          Unlike some programming environments, JavaScript in browsers doesn't support direct
+          Unlike some programming environments, JavaScript in browsers doesn&apos;t support direct
           console input. However, you can simulate input using built-in dialog functions such as:
         </p>
         <div className="mb-6 pl-1.5 border-l-3 border-transparent">
